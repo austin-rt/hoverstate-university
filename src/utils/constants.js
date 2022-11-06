@@ -5,34 +5,13 @@ export const ROUTES = {
 	DASHBOARD: '/dashboard'
 };
 
-export const DEFAULT_FORM_VALUES = {
-	SIGN_IN: {
-		username: '',
-		password: ''
-	},
-	SIGN_UP: {
-		username: '',
-		password: ''
-	},
-	STUDENT: {
-		firstName: '',
-		lastName: '',
-		email: ''
-	},
-	COURSE: {
-		name: '',
-		courseCode: ''
-	},
-	STUDENT_COURSE: {
-		studentId: '',
-		courseId: '',
-		grade: ''
-	}
-};
-
 export const BASE_URL = 'https://hoverstate-university.up.railway.app/api/v1';
 
 export const API_ENDPOINTS = {
+	AUTH: {
+		REGISTER: '/auth/register',
+		LOGIN: '/auth/login'
+	},
 	USERS: {
 		GET: '/users'
 	},
