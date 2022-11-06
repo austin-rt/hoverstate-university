@@ -3,6 +3,7 @@ import { ROUTES } from '../utils/constants';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import CourseDetails from '../pages/CourseDetails';
 
 export const Navigation = () => {
 	return (
@@ -10,6 +11,7 @@ export const Navigation = () => {
 			<Route path={ROUTES.HOME} element={<Home />} />
 			<Route path={ROUTES.LOGIN} element={<Login />} />
 			<Route path={ROUTES.REGISTER} element={<Register />} />
+			<Route path={ROUTES.COURSE_BY_ID} element={<CourseDetails />} />
 		</Routes>
 	);
 };
