@@ -1,13 +1,13 @@
-import './index.css'
+import './index.css';
 
-import Test from './components/TestComponent'
+import Test from './components/TestComponent';
 
 function App() {
   return (
     <div>
       <Test />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
