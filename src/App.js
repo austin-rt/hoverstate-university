@@ -1,13 +1,7 @@
-import './index.css';
-
-import Test from './components/TestComponent';
+import { Navigation } from './navigation/Navigation';
 
 function App() {
-  return (
-    <div>
-      <Test />
-    </div>
-  );
+	return <Navigation />;
 }
 
 export default App;
