@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import {
@@ -12,7 +12,7 @@ const StudentDetails = () => {
 	const { id } = useParams();
 	const [student, setStudent] = useState(null);
 
-	const getStudent = async () => {
+	const getStudent = useCallback(async () => {
 		try {
 			const res = await axios.get(
 				`${BASE_URL}${API_ENDPOINTS.STUDENTS.GET}/${id}`
@@ -21,11 +21,11 @@ const StudentDetails = () => {
 		} catch (err) {
 			console.log(err);
 		}
-	};
+	}, [id]);
 
 	useEffect(() => {
 		getStudent();
-	}, []);
+	}, [getStudent]);
 
 	return (
 		<div className="flex flex-col items-center mt-10">
