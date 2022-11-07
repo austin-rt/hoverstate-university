@@ -1,29 +1,11 @@
-import { useState } from 'react';
-import axios from 'axios';
-import { BASE_URL } from '../../utils/constants';
+import useForm from '../../hooks/useForm';
+import { DEFAULT_FORM_VALUES } from '../../utils/constants';
 
-const Form = ({ buttonText, endpoint }) => {
-	const [formState, setFormState] = useState({
-		username: '',
-		password: ''
-	});
-
-	const handleChange = (e) => {
-		const { id, value } = e.target;
-		setFormState({
-			...formState,
-			[id]: value
-		});
-	};
-
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		try {
-			await axios.post(`${BASE_URL}/${endpoint}`, formState);
-		} catch (err) {
-			console.log(err);
-		}
-	};
+const Form = ({ buttonText, type }) => {
+	const { handleChange, handleSubmit } = useForm(
+		type,
+		DEFAULT_FORM_VALUES.AUTH
+	);
 
 	return (
 		<div>

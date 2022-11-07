@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import { BASE_URL, API_ENDPOINTS, GRADES_MAP } from '../utils/constants';
+import {
+	BASE_URL,
+	API_ENDPOINTS,
+	GRADES_MAP,
+	ROUTES
+} from '../utils/constants';
 
 const CourseDetails = () => {
 	const { id } = useParams();
@@ -29,12 +34,12 @@ const CourseDetails = () => {
 			</h2>
 			<div>
 				{course?.students.map((student) => (
-					<div key={student.id}>
+					<Link to={`${ROUTES.STUDENTS}/${student.id}`} key={student.id}>
 						<div>
 							{student.first_name} {student.last_name}
 						</div>
 						<div>grade: {GRADES_MAP[`${student.StudentCourse.grade}`]}</div>
-					</div>
+					</Link>
 				))}
 			</div>
 		</div>

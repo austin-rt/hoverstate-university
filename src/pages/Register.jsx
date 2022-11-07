@@ -1,9 +1,7 @@
 import AuthForm from '../components/common/AuthForm';
-import { API_ENDPOINTS } from '../utils/constants';
+import { API_ENDPOINTS, FORM_TYPES } from '../utils/constants';
 
 const Register = () => {
-	return (
-		<AuthForm buttonText="Register" endpoint={API_ENDPOINTS.AUTH.REGISTER} />
-	);
+	return <AuthForm buttonText="Register" type={FORM_TYPES.REGISTER} />;
 };
 export default Register;

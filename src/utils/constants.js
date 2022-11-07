@@ -4,6 +4,8 @@ export const ROUTES = {
 	REGISTER: '/register',
 	DASHBOARD: '/dashboard',
 	COURSES: '/courses',
+	STUDENTS: '/students',
+	STUDENT_BY_ID: '/students/:id',
 	COURSE_BY_ID: '/courses/:id'
 };
 
@@ -33,6 +35,36 @@ export const API_ENDPOINTS = {
 		GET_BY_STUDENT_ID: '/student-courses',
 		EDIT_GRADE: '/student-courses/grade',
 		ASSIGN_STUDENT_TO_COURSE: '/student-courses/assign'
+	}
+};
+
+export const FORM_TYPES = {
+	REGISTER: 'register',
+	LOGIN: 'login',
+	SEARCH: 'search'
+};
+
+export const DEFAULT_FORM_VALUES = {
+	AUTH: {
+		username: '',
+		password: ''
+	},
+	SEARCH: {
+		query: ''
+	},
+	COURSE: {
+		name: '',
+		course_code: ''
+	},
+	STUDENT: {
+		first_name: '',
+		last_name: '',
+		email: ''
+	},
+	STUDENT_COURSE: {
+		student_id: '',
+		course_id: '',
+		grade: ''
 	}
 };
 

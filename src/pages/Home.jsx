@@ -8,9 +8,7 @@ const Home = () => {
 
 	const getCourses = async () => {
 		try {
-			const res = await axios.get(
-				`${BASE_URL}/${API_ENDPOINTS.COURSES.GET_ALL}`
-			);
+			const res = await axios.get(`${BASE_URL}/${API_ENDPOINTS.COURSES.GET}`);
 			setCourses(res.data);
 		} catch (err) {
 			console.log(err);
