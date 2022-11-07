@@ -32,7 +32,7 @@ const StudentDetails = () => {
 			<h1 className="text-3xl">
 				{student?.first_name} {student?.last_name}
 			</h1>
-			<div className="flex">
+			<div className="flex flex-wrap w-full">
 				{student?.courses?.map((course) => (
 					<div
 						key={course.id}
@@ -44,9 +44,11 @@ const StudentDetails = () => {
             ${course.StudentCourse.grade === 4 && `bg-green-600`}
             `}
 					>
-						<div>{course.name} </div>
-						<div> {course.course_code}</div>
-						<div>grade: {GRADES_MAP[`${course.StudentCourse.grade}`]}</div>
+						<Link to={`${ROUTES.COURSES}/${course.id}`}>
+							<div>{course.name} </div>
+							<div> {course.course_code}</div>
+							<div>Grade: {GRADES_MAP[`${course.StudentCourse.grade}`]}</div>
+						</Link>
 					</div>
 				))}
 			</div>

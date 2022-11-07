@@ -28,15 +28,15 @@ const CourseDetails = () => {
 	}, []);
 
 	return (
-		<div className="flex flex-col m-10">
+		<div className="flex flex-col m-10 items-center">
 			<h2 className="text-2xl mb-5">
 				{course?.name} {course?.course_code}
 			</h2>
-			<div className="flex flex-wrap">
+			<div className="flex flex-wrap w-full justify-center">
 				{course?.students.map((student) => (
 					<div
 						key={student.id}
-						className={`flex flex-col justify-center items-center m-2 p-2 text-center text-white w-1/6 rounded-md
+						className={`flex flex-col justify-center items-center m-2 p-2 text-center text-white w-1/4 h-20 rounded-md
             ${student.StudentCourse.grade === 0 && `bg-red-500`}
             ${student.StudentCourse.grade === 1 && `bg-orange-500`}
             ${student.StudentCourse.grade === 2 && `bg-yellow-500`}
@@ -48,7 +48,7 @@ const CourseDetails = () => {
 							<div>
 								{student.first_name} {student.last_name}
 							</div>
-							<div>grade: {GRADES_MAP[`${student.StudentCourse.grade}`]}</div>
+							<div>Grade: {GRADES_MAP[`${student.StudentCourse.grade}`]}</div>
 						</Link>
 					</div>
 				))}
