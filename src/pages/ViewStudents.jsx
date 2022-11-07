@@ -31,7 +31,7 @@ const ViewStudents = () => {
 				{students?.map((student) => (
 					<div
 						key={student.id}
-						className="flex flex-col justify-start items-center h-max-content w-1/4 border border-solid bg-blue-500 text-white text-sm rounded-md m-1"
+						className="flex flex-col justify-start items-center h-max-content w-1/5 min-w-[15rem] border border-solid bg-blue-500 text-white text-sm rounded-md m-1"
 					>
 						<h2 className="flex justify-center items-center bg-gray-500 h-12 text-lg w-full rounded-t-md">
 							<Link to={`${ROUTES.STUDENTS}/${student.id}`}>
@@ -52,7 +52,9 @@ const ViewStudents = () => {
             ${course.StudentCourse.grade === 4 && `bg-green-600`}
                     `}
 									>
-										<div>{course.name} </div>
+										<Link to={`${ROUTES.COURSES}/${course.id}`}>
+											<div>{course.name} </div>
+										</Link>
 										<div>{course.course_code}</div>
 										<div>
 											grade: {GRADES_MAP[`${course.StudentCourse.grade}`]}

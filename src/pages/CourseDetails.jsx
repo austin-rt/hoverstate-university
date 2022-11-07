@@ -36,7 +36,7 @@ const CourseDetails = () => {
 				{course?.students.map((student) => (
 					<div
 						key={student.id}
-						className={`flex flex-col justify-center items-center m-2 p-2 text-center text-white w-1/4 h-20 rounded-md
+						className={`flex flex-col justify-center items-center m-2 p-2 text-center text-white w-1/4 min-w-[12rem] h-20 rounded-md
             ${student.StudentCourse.grade === 0 && `bg-red-500`}
             ${student.StudentCourse.grade === 1 && `bg-orange-500`}
             ${student.StudentCourse.grade === 2 && `bg-yellow-500`}
