@@ -28,16 +28,24 @@ const StudentDetails = () => {
 	}, []);
 
 	return (
-		<div>
-			<h2>
+		<div className="flex flex-col items-center mt-10">
+			<h1 className="text-3xl">
 				{student?.first_name} {student?.last_name}
-			</h2>
-			<div>
+			</h1>
+			<div className="flex">
 				{student?.courses?.map((course) => (
-					<div key={course.id}>
-						<div>
-							{course.name} {course.course_code}
-						</div>
+					<div
+						key={course.id}
+						className={`flex flex-col justify-center items-center m-4 p-4 text-center text-white w-1/4 rounded-md
+            ${course.StudentCourse.grade === 0 && `bg-red-500`}
+            ${course.StudentCourse.grade === 1 && `bg-orange-500`}
+            ${course.StudentCourse.grade === 2 && `bg-yellow-500`}
+            ${course.StudentCourse.grade === 3 && `bg-green-500`}
+            ${course.StudentCourse.grade === 4 && `bg-green-600`}
+            `}
+					>
+						<div>{course.name} </div>
+						<div> {course.course_code}</div>
 						<div>grade: {GRADES_MAP[`${course.StudentCourse.grade}`]}</div>
 					</div>
 				))}
