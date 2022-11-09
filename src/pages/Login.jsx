@@ -9,9 +9,9 @@ import {
 const Login = () => {
 	return (
 		<Form
-			type={FORM_TYPES.LOGIN}
+			type={FORM_TYPES.AUTH.LOGIN}
 			inputs={FORM_INPUT_ARRAYS.AUTH}
-			defaultValues={DEFAULT_FORM_VALUES.LOGIN}
+			initialFormState={DEFAULT_FORM_VALUES.LOGIN}
 			buttonText={FORM_BUTTON_TEXT.LOGIN}
 		/>
 	);

@@ -13,7 +13,7 @@ const ViewStudents = () => {
 
 	const getStudents = async () => {
 		try {
-			const res = await axios.get(`${BASE_URL}/${API_ENDPOINTS.STUDENTS.GET}`);
+			const res = await axios.get(`${BASE_URL}${API_ENDPOINTS.STUDENTS.GET}`);
 			setStudents(res.data);
 		} catch (err) {
 			console.log(err);
@@ -48,8 +48,8 @@ const ViewStudents = () => {
                       ${course.StudentCourse.grade === 0 && `bg-red-500`}
             ${course.StudentCourse.grade === 1 && `bg-orange-500`}
             ${course.StudentCourse.grade === 2 && `bg-yellow-500`}
-            ${course.StudentCourse.grade === 3 && `bg-green-500`}
-            ${course.StudentCourse.grade === 4 && `bg-green-600`}
+            ${course.StudentCourse.grade === 3 && `bg-green-600`}
+            ${course.StudentCourse.grade === 4 && `bg-green-500`}
                     `}
 									>
 										<Link to={`${ROUTES.COURSES}/${course.id}`}>

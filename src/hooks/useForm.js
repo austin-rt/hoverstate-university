@@ -42,7 +42,7 @@ const useForm = (
 					console.log(err);
 				}
 				break;
-			case FORM_TYPES.GRADE:
+			case FORM_TYPES.GRADE.EDIT:
 				try {
 					await axios.put(
 						`${BASE_URL}${API_ENDPOINTS.STUDENT_COURSES.EDIT_GRADE}`,
@@ -52,7 +52,19 @@ const useForm = (
 					console.log(err);
 				}
 				break;
+			case FORM_TYPES.STUDENT.ADD:
+				try {
+					const res = await axios.post(
+						`${BASE_URL}${API_ENDPOINTS.STUDENTS.CREATE}`,
+						formState
+					);
+					navigate(`${ROUTES.STUDENTS}/${res.data.payload.id}`);
+				} catch (err) {
+					console.log(err);
+				}
+				break;
 			default:
+				console.log(formState);
 				break;
 		}
 	};

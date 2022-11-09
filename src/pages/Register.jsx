@@ -9,9 +9,9 @@ import {
 const Register = () => {
 	return (
 		<Form
-			type={FORM_TYPES.REGISTER}
+			type={FORM_TYPES.AUTH.REGISTER}
 			inputs={FORM_INPUT_ARRAYS.AUTH}
-			defaultValues={DEFAULT_FORM_VALUES.REGISTER}
+			initialFormState={DEFAULT_FORM_VALUES.REGISTER}
 			buttonText={FORM_BUTTON_TEXT.REGISTER}
 		/>
 	);

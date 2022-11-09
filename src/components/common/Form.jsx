@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import useForm from '../../hooks/useForm';
-import { DEFAULT_FORM_VALUES, FORM_TYPES } from '../../utils/constants';
+import { FORM_TYPES } from '../../utils/constants';
+import Button from './Button';
 
 const Form = ({
 	type,
@@ -8,13 +9,15 @@ const Form = ({
 	dataToEdit,
 	buttonText,
 	closeModal,
-	wasEdited,
-	setWasEdited
+	getStudent,
+	initialFormState
 }) => {
 	const { setFormState, handleChange, handleSubmit } = useForm(
 		type,
-		DEFAULT_FORM_VALUES.GRADE
+		initialFormState
 	);
+
+	let form;
 
 	useEffect(() => {
 		if (dataToEdit) {
@@ -29,18 +32,13 @@ const Form = ({
 	const handleEditSubmit = (e) => {
 		handleSubmit(e);
 		closeModal();
-		setWasEdited((wasEdited) => {
-			return !wasEdited;
-		});
+		getStudent();
 	};
 
-	return (
-		<div className="flex justify-center">
-			<form
-				onSubmit={dataToEdit ? handleEditSubmit : handleSubmit}
-				className="flex flex-col justify-center items-center w-1/2"
-			>
-				{type === FORM_TYPES.GRADE ? (
+	switch (type) {
+		case FORM_TYPES.GRADE.EDIT:
+			form = (
+				<form onSubmit={handleEditSubmit}>
 					<div>
 						{dataToEdit.map((course) => (
 							<div key={course.id} className="flex flex-col items-center">
@@ -64,7 +62,13 @@ const Form = ({
 							</div>
 						))}
 					</div>
-				) : (
+					<Button buttonText={buttonText} />
+				</form>
+			);
+			break;
+		default:
+			form = (
+				<form onSubmit={handleSubmit}>
 					<div>
 						{inputs.map((input) => (
 							<input
@@ -77,12 +81,10 @@ const Form = ({
 							/>
 						))}
 					</div>
-				)}
-				<button className="bg-blue-500 py-2 px-4 m-2 rounded-md w-full">
-					{buttonText}
-				</button>
-			</form>
-		</div>
-	);
+					<Button buttonText={buttonText} />
+				</form>
+			);
+	}
+	return <div className="flex justify-center">{form}</div>;
 };
 export default Form;

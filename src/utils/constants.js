@@ -40,12 +40,25 @@ export const API_ENDPOINTS = {
 };
 
 export const FORM_TYPES = {
-	REGISTER: 'register',
-	LOGIN: 'login',
+	AUTH: {
+		REGISTER: 'register-user',
+		LOGIN: 'login-user'
+	},
+	STUDENT: {
+		ADD: 'add-student',
+		EDIT: 'edit-student',
+		DELETE: 'delete-student'
+	},
 	SEARCH: 'search',
-	STUDENT: 'student',
-	COURSE: 'course',
-	GRADE: 'grade'
+	COURSE: {
+		EDIT: 'edit-course',
+		DELETE: 'delete-course',
+		CREATE: 'create-course'
+	},
+	GRADE: {
+		ADD: 'add-grade',
+		EDIT: 'edit-grade'
+	}
 };
 
 export const DEFAULT_FORM_VALUES = {
@@ -58,16 +71,16 @@ export const DEFAULT_FORM_VALUES = {
 	},
 	COURSE: {
 		name: '',
-		course_code: ''
+		courseCode: ''
 	},
 	STUDENT: {
-		first_name: '',
-		last_name: '',
+		firstName: '',
+		lastName: '',
 		email: ''
 	},
 	GRADE: {
-		student_id: '',
-		course_id: '',
+		studentId: '',
+		courseId: '',
 		grade: ''
 	}
 };
@@ -80,16 +93,16 @@ export const FORM_INPUT_ARRAYS = {
 	SEARCH: [{ name: 'query', type: 'text', placeholder: 'Search' }],
 	COURSE: [
 		{ name: 'name', type: 'text', placeholder: 'Course Name' },
-		{ name: 'course_code', type: 'text', placeholder: 'Course Code' }
+		{ name: 'courseCode', type: 'text', placeholder: 'Course Code' }
 	],
 	STUDENT: [
-		{ name: 'first_name', type: 'text', placeholder: 'First Name' },
-		{ name: 'last_name', type: 'text', placeholder: 'Last Name' },
+		{ name: 'firstName', type: 'text', placeholder: 'First Name' },
+		{ name: 'lastName', type: 'text', placeholder: 'Last Name' },
 		{ name: 'email', type: 'email', placeholder: 'Email' }
 	],
 	GRADE: [
-		{ name: 'student_id', type: 'text', placeholder: 'Student ID' },
-		{ name: 'course_id', type: 'text', placeholder: 'Course ID' },
+		{ name: 'studentId', type: 'text', placeholder: 'Student ID' },
+		{ name: 'courseId', type: 'text', placeholder: 'Course ID' },
 		{ name: 'grade', type: 'text', placeholder: 'Grade' }
 	]
 };

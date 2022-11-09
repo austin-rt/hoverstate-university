@@ -8,7 +8,7 @@ const ViewCourses = () => {
 
 	const getCourses = useCallback(async () => {
 		try {
-			const res = await axios.get(`${BASE_URL}/${API_ENDPOINTS.COURSES.GET}`);
+			const res = await axios.get(`${BASE_URL}${API_ENDPOINTS.COURSES.GET}`);
 			setCourses(res.data);
 		} catch (err) {
 			console.log(err);

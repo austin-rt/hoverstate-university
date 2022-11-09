@@ -8,6 +8,7 @@ import {
 	ROUTES
 } from '../utils/constants';
 import FormModal from '../components/common/FormModal';
+import Button from '../components/common/Button';
 
 const StudentDetails = () => {
 	const { id: studentId } = useParams();
@@ -15,20 +16,17 @@ const StudentDetails = () => {
 	const [student, setStudent] = useState(null);
 	const [selectedCourse, setSelectedCourse] = useState(null);
 	const [modalVisibility, toggleModalVisibility] = useState(false);
-	const [wasEdited, setWasEdited] = useState(false);
 
-	console.log('rendered');
-
-	const getStudent = async () => {
+	const getStudent = useCallback(async () => {
 		try {
 			const res = await axios.get(
 				`${BASE_URL}${API_ENDPOINTS.STUDENTS.GET}/${studentId}`
 			);
-			setStudent(res.data);
+			setStudent({ ...res.data });
 		} catch (err) {
 			console.log(err);
 		}
-	};
+	}, [studentId]);
 
 	const handleEditClick = (course) => {
 		toggleModalVisibility(!modalVisibility);
@@ -37,7 +35,7 @@ const StudentDetails = () => {
 
 	useEffect(() => {
 		getStudent();
-	}, [wasEdited]);
+	}, [getStudent]);
 
 	return (
 		<div className="flex flex-col items-center mt-10">
@@ -45,12 +43,14 @@ const StudentDetails = () => {
 				modalVisibility={modalVisibility}
 				toggleModalVisibility={toggleModalVisibility}
 				dataToEdit={selectedCourse}
-				wasEdited={wasEdited}
-				setWasEdited={setWasEdited}
+				getStudent={getStudent}
 			/>
-			<h1 className="text-3xl">
+			<h1 className="text-3xl mb-5">
 				{student?.first_name} {student?.last_name}
 			</h1>
+			<div className="flex justify-center">
+				<Button buttonText={'Assign to Course'} />
+			</div>
 			<div className="flex flex-wrap w-full justify-center">
 				{student?.courses?.map((course) => (
 					<div
@@ -59,8 +59,8 @@ const StudentDetails = () => {
             ${course.StudentCourse.grade === 0 && `bg-red-500`}
             ${course.StudentCourse.grade === 1 && `bg-orange-500`}
             ${course.StudentCourse.grade === 2 && `bg-yellow-500`}
-            ${course.StudentCourse.grade === 3 && `bg-green-500`}
-            ${course.StudentCourse.grade === 4 && `bg-green-600`}
+            ${course.StudentCourse.grade === 3 && `bg-green-600`}
+            ${course.StudentCourse.grade === 4 && `bg-green-500`}
             `}
 					>
 						<Link to={`${ROUTES.COURSES}/${course.id}`}>
