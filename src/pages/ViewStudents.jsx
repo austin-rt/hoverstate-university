@@ -57,7 +57,7 @@ const ViewStudents = () => {
 										</Link>
 										<div>{course.course_code}</div>
 										<div>
-											grade: {GRADES_MAP[`${course.StudentCourse.grade}`]}
+											Grade: {GRADES_MAP[`${course.StudentCourse.grade}`]}
 										</div>
 									</div>
 								))}

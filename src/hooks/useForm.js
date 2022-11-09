@@ -18,11 +18,9 @@ const useForm = (
 	const navigate = useNavigate();
 
 	const [formState, setFormState] = useState(initialFormState);
-	const [isLoading, setIsLoading] = useState(false);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		setIsLoading(true);
 
 		switch (type) {
 			case FORM_TYPES.LOGIN:
@@ -44,19 +42,29 @@ const useForm = (
 					console.log(err);
 				}
 				break;
+			case FORM_TYPES.GRADE:
+				try {
+					await axios.put(
+						`${BASE_URL}${API_ENDPOINTS.STUDENT_COURSES.EDIT_GRADE}`,
+						formState
+					);
+				} catch (err) {
+					console.log(err);
+				}
+				break;
 			default:
 				break;
 		}
 	};
 
 	const handleChange = (e) => {
-		const { id, value } = e.target;
-		setFormState({ ...formState, [id]: value });
+		const { name, value } = e.target;
+		setFormState({ ...formState, [name]: value });
 	};
 
 	return {
 		formState,
-		isLoading,
+		setFormState,
 		handleChange,
 		handleSubmit
 	};

@@ -5,6 +5,7 @@ export const ROUTES = {
 	DASHBOARD: '/dashboard',
 	COURSES: '/courses',
 	STUDENTS: '/students',
+	STUDENTS_ADD: '/students/add',
 	STUDENT_BY_ID: '/students/:id',
 	COURSE_BY_ID: '/courses/:id'
 };
@@ -41,7 +42,10 @@ export const API_ENDPOINTS = {
 export const FORM_TYPES = {
 	REGISTER: 'register',
 	LOGIN: 'login',
-	SEARCH: 'search'
+	SEARCH: 'search',
+	STUDENT: 'student',
+	COURSE: 'course',
+	GRADE: 'grade'
 };
 
 export const DEFAULT_FORM_VALUES = {
@@ -61,11 +65,40 @@ export const DEFAULT_FORM_VALUES = {
 		last_name: '',
 		email: ''
 	},
-	STUDENT_COURSE: {
+	GRADE: {
 		student_id: '',
 		course_id: '',
 		grade: ''
 	}
+};
+
+export const FORM_INPUT_ARRAYS = {
+	AUTH: [
+		{ name: 'username', type: 'text', placeholder: 'Username' },
+		{ name: 'password', type: 'password', placeholder: 'Password' }
+	],
+	SEARCH: [{ name: 'query', type: 'text', placeholder: 'Search' }],
+	COURSE: [
+		{ name: 'name', type: 'text', placeholder: 'Course Name' },
+		{ name: 'course_code', type: 'text', placeholder: 'Course Code' }
+	],
+	STUDENT: [
+		{ name: 'first_name', type: 'text', placeholder: 'First Name' },
+		{ name: 'last_name', type: 'text', placeholder: 'Last Name' },
+		{ name: 'email', type: 'email', placeholder: 'Email' }
+	],
+	GRADE: [
+		{ name: 'student_id', type: 'text', placeholder: 'Student ID' },
+		{ name: 'course_id', type: 'text', placeholder: 'Course ID' },
+		{ name: 'grade', type: 'text', placeholder: 'Grade' }
+	]
+};
+
+export const FORM_BUTTON_TEXT = {
+	LOGIN: 'Sign In',
+	REGISTER: 'Sign Up',
+	SEARCH: 'Search',
+	SUBMIT: 'Submit'
 };
 
 export const GRADES_MAP = {
