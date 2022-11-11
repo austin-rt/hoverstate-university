@@ -1,6 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import useForm from '../../hooks/useForm';
-import { FORM_TYPES } from '../../utils/constants';
+import {
+	BASE_URL,
+	API_ENDPOINTS,
+	DEFAULT_FORM_VALUES,
+	FORM_TYPES
+} from '../../utils/constants';
 import Button from './Button';
 
 const Form = ({
@@ -19,31 +25,59 @@ const Form = ({
 
 	let form;
 
-	useEffect(() => {
-		if (dataToEdit) {
-			const { id: courseId } = dataToEdit[0];
-			const { id: studentId } = dataToEdit[0].student;
-			const { grade } = dataToEdit[0].StudentCourse;
-			console.log();
-			setFormState({ courseId, studentId, grade });
-		}
-	}, [dataToEdit]);
+	const [courses, setCourses] = useState([]);
 
 	const handleEditSubmit = (e) => {
 		handleSubmit(e);
-		closeModal();
 		getStudent();
+		closeModal();
 	};
 
+	const handleAssignCourseSubmit = (e) => {
+		handleSubmit(e);
+		// getStudent();
+		// closeModal();
+	};
+
+	const getAllCourses = async () => {
+		try {
+			const res = await axios.get(`${BASE_URL}${API_ENDPOINTS.COURSES.GET}`);
+			setCourses(res.data);
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	useEffect(() => {
+		if (!dataToEdit) return;
+		if (dataToEdit.type === FORM_TYPES.GRADE.EDIT) {
+			console.log(dataToEdit);
+			const { id: courseId } = dataToEdit.course[0];
+			const { id: studentId } = dataToEdit.student;
+			const { grade } = dataToEdit.course[0].StudentCourse;
+			setFormState({ courseId, studentId, grade });
+		} else if (dataToEdit.type === FORM_TYPES.COURSE.ASSIGN) {
+			const {
+				id: studentId,
+				first_name: firstName,
+				last_name: lastName
+			} = dataToEdit;
+			setFormState({ ...DEFAULT_FORM_VALUES.GRADE, studentId });
+			getAllCourses();
+		}
+	}, []);
 	switch (type) {
 		case FORM_TYPES.GRADE.EDIT:
 			form = (
-				<form onSubmit={handleEditSubmit}>
+				<form
+					onSubmit={handleEditSubmit}
+					className="flex flex-col items-center"
+				>
 					<div>
-						{dataToEdit.map((course) => (
+						{dataToEdit?.course.map((course) => (
 							<div key={course.id} className="flex flex-col items-center">
 								<div className="text-2xl m-2">
-									{`${course.student.first_name} ${course.student.last_name}`}
+									{`${dataToEdit.student.first_name} ${dataToEdit.student.last_name}`}
 								</div>
 								<div className="text-xl m-2">{course.name}</div>
 								<div className="m-2">{course.course_code}</div>
@@ -66,19 +100,58 @@ const Form = ({
 				</form>
 			);
 			break;
+		case FORM_TYPES.GRADE.ADD:
+			form = (
+				<form
+					onSubmit={handleAssignCourseSubmit}
+					className="flex flex-col items-center w-2/3"
+				>
+					<div className="flex flex-col justify-center items-center">
+						{`${dataToEdit.first_name} ${dataToEdit.last_name}`}
+						<select
+							defaultValue={1}
+							name="courseId"
+							onChange={handleChange}
+							className="w-full text-center bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
+						>
+							{courses.map((course) => (
+								<option key={course.id} value={parseInt(course.id)}>
+									{course.name}
+								</option>
+							))}
+						</select>
+						<select
+							defaultValue={4}
+							name="grade"
+							onChange={handleChange}
+							className="w-max-content text-center bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
+						>
+							<option value={parseInt(4)}>A</option>
+							<option value={parseInt(3)}>B</option>
+							<option value={parseInt(2)}>C</option>
+							<option value={parseInt(1)}>D</option>
+							<option value={parseInt(0)}>F</option>
+						</select>
+					</div>
+					<Button buttonText={buttonText} />
+				</form>
+			);
+			break;
 		default:
 			form = (
-				<form onSubmit={handleSubmit}>
+				<form onSubmit={handleSubmit} className="flex flex-col items-center">
 					<div>
 						{inputs.map((input) => (
-							<input
-								key={input.name}
-								type={input.type}
-								name={input.name}
-								placeholder={input.placeholder}
-								onChange={handleChange}
-								className="m-2 rounded text-center py-1 px-4 w-full"
-							/>
+							<div key={input.name} className="flex flex-col items-center">
+								<input
+									key={input.name}
+									type={input.type}
+									name={input.name}
+									placeholder={input.placeholder}
+									onChange={handleChange}
+									className="m-2 rounded text-center py-1 px-3 w-full"
+								/>
+							</div>
 						))}
 					</div>
 					<Button buttonText={buttonText} />

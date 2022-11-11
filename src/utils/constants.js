@@ -47,7 +47,8 @@ export const FORM_TYPES = {
 	STUDENT: {
 		ADD: 'add-student',
 		EDIT: 'edit-student',
-		DELETE: 'delete-student'
+		DELETE: 'delete-student',
+		ADD_COURSE: 'add-course'
 	},
 	SEARCH: 'search',
 	COURSE: {
@@ -111,7 +112,8 @@ export const FORM_BUTTON_TEXT = {
 	LOGIN: 'Sign In',
 	REGISTER: 'Sign Up',
 	SEARCH: 'Search',
-	SUBMIT: 'Submit'
+	SUBMIT: 'Submit',
+	ASSIGN: 'Assign to Course'
 };
 
 export const GRADES_MAP = {
@@ -120,4 +122,13 @@ export const GRADES_MAP = {
 	2: 'C',
 	1: 'D',
 	0: 'F'
+};
+
+export const MODAL_TYPES = {
+	EDIT_GRADE: {
+		type: 'edit-grade'
+	},
+	ASSIGN_COURSE: {
+		type: 'assign-course'
+	}
 };

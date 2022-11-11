@@ -63,6 +63,15 @@ const useForm = (
 					console.log(err);
 				}
 				break;
+			case FORM_TYPES.GRADE.ADD:
+				try {
+					await axios.post(
+						`${BASE_URL}${API_ENDPOINTS.STUDENT_COURSES.ASSIGN_STUDENT_TO_COURSE}`
+					);
+				} catch (err) {
+					console.log(err);
+				}
+				break;
 			default:
 				console.log(formState);
 				break;

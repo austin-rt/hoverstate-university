@@ -5,17 +5,25 @@ import {
 	BASE_URL,
 	API_ENDPOINTS,
 	GRADES_MAP,
-	ROUTES
+	ROUTES,
+	FORM_BUTTON_TEXT,
+	FORM_TYPES
 } from '../utils/constants';
-import FormModal from '../components/common/FormModal';
+import EditGradeFormModal from '../components/common/EditGradeFormModal';
 import Button from '../components/common/Button';
+import AssignCourseModal from '../components/common/AssignCourseModal';
 
 const StudentDetails = () => {
+	console.log('rendered');
+
 	const { id: studentId } = useParams();
 
 	const [student, setStudent] = useState(null);
 	const [selectedCourse, setSelectedCourse] = useState(null);
-	const [modalVisibility, toggleModalVisibility] = useState(false);
+	const [editGradeModalVisibility, toggleEditGradeModalVisibility] =
+		useState(false);
+	const [assignCourseModalVisibility, toggleAssignCourseModalVisibility] =
+		useState(false);
 
 	const getStudent = useCallback(async () => {
 		try {
@@ -26,11 +34,15 @@ const StudentDetails = () => {
 		} catch (err) {
 			console.log(err);
 		}
-	}, [studentId]);
+	}, [studentId, editGradeModalVisibility, assignCourseModalVisibility]);
 
 	const handleEditClick = (course) => {
-		toggleModalVisibility(!modalVisibility);
-		setSelectedCourse([{ ...course, student }]);
+		toggleEditGradeModalVisibility(!editGradeModalVisibility);
+		setSelectedCourse({ course: [{ ...course }], student });
+	};
+
+	const handleAddCourseClick = () => {
+		toggleAssignCourseModalVisibility(!assignCourseModalVisibility);
 	};
 
 	useEffect(() => {
@@ -39,17 +51,23 @@ const StudentDetails = () => {
 
 	return (
 		<div className="flex flex-col items-center mt-10">
-			<FormModal
-				modalVisibility={modalVisibility}
-				toggleModalVisibility={toggleModalVisibility}
-				dataToEdit={selectedCourse}
+			<AssignCourseModal
+				assignCourseModalVisibility={assignCourseModalVisibility}
+				toggleAssignCourseModalVisibility={toggleAssignCourseModalVisibility}
+				dataToEdit={{ ...student, type: FORM_TYPES.COURSE.ASSIGN }}
+				getStudent={getStudent}
+			/>
+			<EditGradeFormModal
+				editGradeModalVisibility={editGradeModalVisibility}
+				toggleEditGradeModalVisibility={toggleEditGradeModalVisibility}
+				dataToEdit={{ ...selectedCourse, type: FORM_TYPES.GRADE.EDIT }}
 				getStudent={getStudent}
 			/>
 			<h1 className="text-3xl mb-5">
 				{student?.first_name} {student?.last_name}
 			</h1>
-			<div className="flex justify-center">
-				<Button buttonText={'Assign to Course'} />
+			<div className="flex justify-center" onClick={handleAddCourseClick}>
+				<Button buttonText={FORM_BUTTON_TEXT.ASSIGN} />
 			</div>
 			<div className="flex flex-wrap w-full justify-center">
 				{student?.courses?.map((course) => (

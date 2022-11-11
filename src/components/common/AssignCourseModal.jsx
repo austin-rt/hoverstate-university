@@ -1,22 +1,21 @@
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import {
-	DEFAULT_FORM_VALUES,
 	FORM_BUTTON_TEXT,
 	FORM_INPUT_ARRAYS,
 	FORM_TYPES
 } from '../../utils/constants';
 import Form from './Form';
 
-const FormModal = ({
-	modalVisibility,
-	toggleModalVisibility,
+const AssignCourseModal = ({
+	assignCourseModalVisibility,
+	toggleAssignCourseModalVisibility,
 	dataToEdit,
 	getStudent
 }) => {
-	if (!modalVisibility) return null;
+	if (!assignCourseModalVisibility) return null;
 
 	const closeModal = () => {
-		toggleModalVisibility(false);
+		toggleAssignCourseModalVisibility(false);
 	};
 
 	return (
@@ -28,15 +27,14 @@ const FormModal = ({
 				/>
 			</div>
 			<Form
-				type={FORM_TYPES.GRADE.EDIT}
+				type={FORM_TYPES.GRADE.ADD}
 				inputs={FORM_INPUT_ARRAYS.GRADE}
-				initialFormValues={DEFAULT_FORM_VALUES.GRADE}
-				buttonText={FORM_BUTTON_TEXT.SUBMIT}
+				initialFormState={dataToEdit}
+				buttonText={FORM_BUTTON_TEXT.ASSIGN}
 				dataToEdit={dataToEdit}
-				closeModal={closeModal}
 				getStudent={getStudent}
 			/>
 		</div>
 	);
 };
-export default FormModal;
+export default AssignCourseModal;
