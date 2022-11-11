@@ -6,19 +6,19 @@ import {
 	FORM_TYPES
 } from '../utils/constants';
 
-const AddStudent = () => {
+const AddCourse = () => {
 	return (
 		<div className="flex flex-col justify-center items-center">
-			<div>Add a student to the registery</div>
+			<div>Add a course to the registery</div>
 			<div>
 				<Form
-					inputs={FORM_INPUT_ARRAYS.STUDENT}
-					type={FORM_TYPES.STUDENT.ADD}
-					initialFormState={DEFAULT_FORM_VALUES.STUDENT}
+					inputs={FORM_INPUT_ARRAYS.COURSE}
+					type={FORM_TYPES.COURSE.ADD}
+					initialFormState={DEFAULT_FORM_VALUES.COURSE}
 					buttonText={FORM_BUTTON_TEXT.SUBMIT}
 				/>
 			</div>
 		</div>
 	);
 };
-export default AddStudent;
+export default AddCourse;

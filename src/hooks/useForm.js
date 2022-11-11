@@ -72,6 +72,17 @@ const useForm = (
 					console.log(err);
 				}
 				break;
+			case FORM_TYPES.COURSE.ADD:
+				try {
+					const res = await axios.post(
+						`${BASE_URL}${API_ENDPOINTS.COURSES.CREATE}`,
+						formState
+					);
+					navigate(`${ROUTES.COURSES}/${res.data.payload.id}`);
+				} catch (err) {
+					console.log(err);
+				}
+				break;
 			default:
 				console.log(formState);
 				break;
