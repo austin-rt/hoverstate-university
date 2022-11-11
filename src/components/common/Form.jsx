@@ -36,8 +36,8 @@ const Form = ({
 
 	const handleAssignCourseSubmit = (e) => {
 		handleSubmit(e);
-		// getStudent();
-		// closeModal();
+		getStudent();
+		closeModal();
 	};
 
 	const getAllCourses = async () => {
@@ -67,11 +67,7 @@ const Form = ({
 			setFormState({ courseId, studentId, grade });
 		} else if (dataToEdit.type === FORM_TYPES.GRADE.ADD) {
 			if (dataToEdit.first_name) {
-				const {
-					id: studentId,
-					first_name: firstName,
-					last_name: lastName
-				} = dataToEdit;
+				const { id: studentId } = dataToEdit;
 				getAllCourses();
 				setFormState({
 					...DEFAULT_FORM_VALUES.GRADE,

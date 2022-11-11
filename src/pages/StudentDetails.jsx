@@ -9,6 +9,7 @@ import {
 	FORM_BUTTON_TEXT,
 	FORM_TYPES
 } from '../utils/constants';
+import { average, getGrades } from '../utils/utils';
 import EditGradeFormModal from '../components/common/EditGradeFormModal';
 import Button from '../components/common/Button';
 import AssignCourseModal from '../components/common/AssignCourseModal';
@@ -17,6 +18,7 @@ const StudentDetails = () => {
 	const { id: studentId } = useParams();
 
 	const [student, setStudent] = useState(null);
+	const [studentGPA, setStudentGPA] = useState(null);
 	const [selectedCourse, setSelectedCourse] = useState(null);
 	const [editGradeModalVisibility, toggleEditGradeModalVisibility] =
 		useState(false);
@@ -29,6 +31,7 @@ const StudentDetails = () => {
 				`${BASE_URL}${API_ENDPOINTS.STUDENTS.GET}/${studentId}`
 			);
 			setStudent({ ...res.data });
+			setStudentGPA(parseFloat(average(getGrades(res.data)).toFixed(2)));
 		} catch (err) {
 			console.log(err);
 		}
@@ -64,6 +67,16 @@ const StudentDetails = () => {
 			<h1 className="text-3xl mb-5">
 				{student?.first_name} {student?.last_name}
 			</h1>
+			<h2
+				className={`text-white rounded-sm p-2
+				${studentGPA < 1 && `bg-red-500`}
+				${studentGPA < 2 && `bg-orange-500`}
+				${studentGPA < 3 && `bg-yellow-500`}
+				${studentGPA > 3 && `bg-green-500`}`}
+			>
+				GPA:
+				<span className="font-bold">{studentGPA}</span>
+			</h2>
 			<div className="flex justify-center" onClick={handleAddCourseClick}>
 				<Button buttonText={FORM_BUTTON_TEXT.ASSIGN} />
 			</div>
