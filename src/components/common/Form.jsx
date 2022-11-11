@@ -18,14 +18,15 @@ const Form = ({
 	getStudent,
 	initialFormState
 }) => {
-	const { setFormState, handleChange, handleSubmit } = useForm(
+	const { setFormState, handleChange, handleSubmit, formState } = useForm(
 		type,
 		initialFormState
 	);
 
 	let form;
 
-	const [courses, setCourses] = useState([]);
+	const [courses, setCourses] = useState(null);
+	const [students, setStudents] = useState(null);
 
 	const handleEditSubmit = (e) => {
 		handleSubmit(e);
@@ -48,24 +49,56 @@ const Form = ({
 		}
 	};
 
+	const getStudents = async () => {
+		try {
+			const res = await axios.get(`${BASE_URL}${API_ENDPOINTS.STUDENTS.GET}`);
+			setStudents(res.data);
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
 	useEffect(() => {
 		if (!dataToEdit) return;
 		if (dataToEdit.type === FORM_TYPES.GRADE.EDIT) {
-			console.log(dataToEdit);
 			const { id: courseId } = dataToEdit.course[0];
 			const { id: studentId } = dataToEdit.student;
 			const { grade } = dataToEdit.course[0].StudentCourse;
 			setFormState({ courseId, studentId, grade });
-		} else if (dataToEdit.type === FORM_TYPES.COURSE.ASSIGN) {
-			const {
-				id: studentId,
-				first_name: firstName,
-				last_name: lastName
-			} = dataToEdit;
-			setFormState({ ...DEFAULT_FORM_VALUES.GRADE, studentId });
-			getAllCourses();
+		} else if (dataToEdit.type === FORM_TYPES.GRADE.ADD) {
+			if (dataToEdit.first_name) {
+				const {
+					id: studentId,
+					first_name: firstName,
+					last_name: lastName
+				} = dataToEdit;
+				getAllCourses();
+				setFormState({
+					...DEFAULT_FORM_VALUES.GRADE,
+					studentId,
+					grade: 4
+				});
+			} else if (dataToEdit.course_code) {
+				const { id: courseId } = dataToEdit;
+				getStudents();
+				setFormState({
+					...DEFAULT_FORM_VALUES.GRADE,
+					courseId,
+					grade: 4
+				});
+			}
 		}
 	}, []);
+
+	useEffect(() => {
+		courses &&
+			setFormState({ ...formState, courseId: parseInt(courses[0].id) });
+	}, [courses]);
+
+	useEffect(() => {
+		students && setFormState({ ...formState, studentId: students[0].id });
+	}, [students]);
+
 	switch (type) {
 		case FORM_TYPES.GRADE.EDIT:
 			form = (
@@ -82,7 +115,7 @@ const Form = ({
 								<div className="text-xl m-2">{course.name}</div>
 								<div className="m-2">{course.course_code}</div>
 								<select
-									defaultValue={course.StudentCourse.grade}
+									defaultValue={parseInt(course.StudentCourse.grade)}
 									name="grade"
 									onChange={handleChange}
 									className="w-max-content text-center bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
@@ -107,21 +140,44 @@ const Form = ({
 					className="flex flex-col items-center w-2/3"
 				>
 					<div className="flex flex-col justify-center items-center">
-						{`${dataToEdit.first_name} ${dataToEdit.last_name}`}
+						{dataToEdit.first_name ? (
+							<div className="flex flex-col justify-center items-center">
+								{dataToEdit.first_name} {dataToEdit.last_name}
+								<select
+									defaultValue={courses && parseInt(courses[0].id)}
+									name="courseId"
+									onChange={handleChange}
+									className="w-full text-center bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
+								>
+									{courses?.map((course) => (
+										<option key={course.id} value={parseInt(course.id)}>
+											{course.name}
+										</option>
+									))}
+								</select>
+							</div>
+						) : (
+							<div>
+								<div>
+									{dataToEdit?.name} {dataToEdit?.course_code}
+								</div>
+								<select
+									defaultValue={students && parseInt(students[0].id)}
+									name="studentId"
+									onChange={handleChange}
+									className="w-max-content text-center bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
+								>
+									{students?.map((student) => (
+										<option
+											key={student.id}
+											value={parseInt(student.id)}
+										>{`${student.first_name} ${student.last_name}`}</option>
+									))}
+								</select>
+							</div>
+						)}
 						<select
-							defaultValue={1}
-							name="courseId"
-							onChange={handleChange}
-							className="w-full text-center bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
-						>
-							{courses.map((course) => (
-								<option key={course.id} value={parseInt(course.id)}>
-									{course.name}
-								</option>
-							))}
-						</select>
-						<select
-							defaultValue={4}
+							defaultValue={parseInt(4)}
 							name="grade"
 							onChange={handleChange}
 							className="w-max-content text-center bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"

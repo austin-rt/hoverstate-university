@@ -14,8 +14,6 @@ import Button from '../components/common/Button';
 import AssignCourseModal from '../components/common/AssignCourseModal';
 
 const StudentDetails = () => {
-	console.log('rendered');
-
 	const { id: studentId } = useParams();
 
 	const [student, setStudent] = useState(null);
@@ -54,7 +52,7 @@ const StudentDetails = () => {
 			<AssignCourseModal
 				assignCourseModalVisibility={assignCourseModalVisibility}
 				toggleAssignCourseModalVisibility={toggleAssignCourseModalVisibility}
-				dataToEdit={{ ...student, type: FORM_TYPES.COURSE.ASSIGN }}
+				dataToEdit={{ ...student, type: FORM_TYPES.GRADE.ADD }}
 				getStudent={getStudent}
 			/>
 			<EditGradeFormModal

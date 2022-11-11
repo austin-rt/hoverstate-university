@@ -48,8 +48,7 @@ export const FORM_TYPES = {
 	STUDENT: {
 		ADD: 'add-student',
 		EDIT: 'edit-student',
-		DELETE: 'delete-student',
-		ADD_COURSE: 'add-course'
+		DELETE: 'delete-student'
 	},
 	SEARCH: 'search',
 	COURSE: {
@@ -59,7 +58,7 @@ export const FORM_TYPES = {
 		CREATE: 'create-course'
 	},
 	GRADE: {
-		ADD: 'add-grade',
+		ADD: 'assign-student-to-course',
 		EDIT: 'edit-grade'
 	}
 };
@@ -115,7 +114,7 @@ export const FORM_BUTTON_TEXT = {
 	REGISTER: 'Sign Up',
 	SEARCH: 'Search',
 	SUBMIT: 'Submit',
-	ASSIGN: 'Assign to Course',
+	ASSIGN: 'Assign Student to Course',
 	ADD_COURSE: 'Add Course'
 };
 

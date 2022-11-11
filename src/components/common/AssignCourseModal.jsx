@@ -29,6 +29,7 @@ const AssignCourseModal = ({
 			<Form
 				type={FORM_TYPES.GRADE.ADD}
 				inputs={FORM_INPUT_ARRAYS.GRADE}
+				closeModal={closeModal}
 				initialFormState={dataToEdit}
 				buttonText={FORM_BUTTON_TEXT.ASSIGN}
 				dataToEdit={dataToEdit}
