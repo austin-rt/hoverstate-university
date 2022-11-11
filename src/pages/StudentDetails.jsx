@@ -35,6 +35,7 @@ const StudentDetails = () => {
 		} catch (err) {
 			console.log(err);
 		}
+		// eslint-disable-next-line
 	}, [studentId, editGradeModalVisibility, assignCourseModalVisibility]);
 
 	const handleEditClick = (course) => {

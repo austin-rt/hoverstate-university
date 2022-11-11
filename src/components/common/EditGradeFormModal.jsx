@@ -20,7 +20,7 @@ const EditGradeFormModal = ({
 	};
 
 	return (
-		<div className="absolute w-2/3 h-1/3 flex flex-col justify-start bg-gray-500 text-white rounded-lg">
+		<div className="fixed w-3/4 h-1/3 flex flex-col justify-start bg-gray-500 text-white rounded-lg">
 			<div>
 				<AiOutlineCloseCircle
 					onClick={closeModal}

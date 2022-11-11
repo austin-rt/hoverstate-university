@@ -84,16 +84,19 @@ const Form = ({
 				});
 			}
 		}
-	}, []);
+		// eslint-disable-next-line
+	}, [dataToEdit, setFormState]);
 
 	useEffect(() => {
 		courses &&
 			setFormState({ ...formState, courseId: parseInt(courses[0].id) });
-	}, [courses]);
+		// eslint-disable-next-line
+	}, [courses, setFormState]);
 
 	useEffect(() => {
 		students && setFormState({ ...formState, studentId: students[0].id });
-	}, [students]);
+		// eslint-disable-next-line
+	}, [students, setFormState]);
 
 	switch (type) {
 		case FORM_TYPES.GRADE.EDIT:
@@ -102,19 +105,19 @@ const Form = ({
 					onSubmit={handleEditSubmit}
 					className="flex flex-col items-center"
 				>
-					<div>
+					<div className="flex flex-col place-content-between">
 						{dataToEdit?.course.map((course) => (
 							<div key={course.id} className="flex flex-col items-center">
-								<div className="text-2xl m-2">
+								<div className="text-2xl">
 									{`${dataToEdit.student.first_name} ${dataToEdit.student.last_name}`}
 								</div>
-								<div className="text-xl m-2">{course.name}</div>
-								<div className="m-2">{course.course_code}</div>
+								<div className="text-xl">{course.name}</div>
+								<div>{course.course_code}</div>
 								<select
 									defaultValue={parseInt(course.StudentCourse.grade)}
 									name="grade"
 									onChange={handleChange}
-									className="w-max-content text-center bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
+									className="w-max-content bg-transparent outline-1 outline-white outline rounded-sm py-1 px-2"
 								>
 									<option value={4}>A</option>
 									<option value={3}>B</option>
@@ -124,8 +127,8 @@ const Form = ({
 								</select>
 							</div>
 						))}
+						<Button buttonText={buttonText} />
 					</div>
-					<Button buttonText={buttonText} />
 				</form>
 			);
 			break;
@@ -143,7 +146,7 @@ const Form = ({
 									defaultValue={courses && parseInt(courses[0].id)}
 									name="courseId"
 									onChange={handleChange}
-									className="w-full text-center bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
+									className="w-full bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
 								>
 									{courses?.map((course) => (
 										<option key={course.id} value={parseInt(course.id)}>
@@ -161,7 +164,7 @@ const Form = ({
 									defaultValue={students && parseInt(students[0].id)}
 									name="studentId"
 									onChange={handleChange}
-									className="w-max-content text-center bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
+									className="w-max-content bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
 								>
 									{students?.map((student) => (
 										<option
@@ -176,7 +179,7 @@ const Form = ({
 							defaultValue={parseInt(4)}
 							name="grade"
 							onChange={handleChange}
-							className="w-max-content text-center bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
+							className="w-max-content bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
 						>
 							<option value={parseInt(4)}>A</option>
 							<option value={parseInt(3)}>B</option>
@@ -201,7 +204,7 @@ const Form = ({
 									name={input.name}
 									placeholder={input.placeholder}
 									onChange={handleChange}
-									className="m-2 rounded text-center py-1 px-3 w-full"
+									className="m-2 rounded py-1 px-3 w-full"
 								/>
 							</div>
 						))}
@@ -210,6 +213,6 @@ const Form = ({
 				</form>
 			);
 	}
-	return <div className="flex justify-center">{form}</div>;
+	return <div className="flex justify-center text-center ">{form}</div>;
 };
 export default Form;
