@@ -4,6 +4,7 @@ export const ROUTES = {
 	REGISTER: '/register',
 	DASHBOARD: '/dashboard',
 	COURSES: '/courses',
+	COURSES_ADD: '/courses/add',
 	STUDENTS: '/students',
 	STUDENTS_ADD: '/students/add',
 	STUDENT_BY_ID: '/students/:id',
