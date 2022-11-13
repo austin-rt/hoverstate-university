@@ -1,13 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link, Routes } from 'react-router-dom';
 import { ROUTES } from '../utils/constants';
 
 const NavBar = () => {
 	return (
-		<div className="flex justify-end items-center h-14 w-full bg-gradient-to-b from-slate-700 to-slate-800 text-white text-lg p-10 mb-10">
-			<Link to={ROUTES.COURSES} className="m-5">
+		<div className="flex justify-end items-center h-7 w-full text-lg p-10 ">
+			<Link to={ROUTES.COURSES} className="m-3">
 				Courses
 			</Link>
-			<Link to={ROUTES.STUDENTS}>Students</Link>
+			<Link to={ROUTES.STUDENTS} className="m-3">
+				Students
+			</Link>
 		</div>
 	);
 };
