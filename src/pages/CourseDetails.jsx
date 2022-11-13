@@ -49,28 +49,38 @@ const CourseDetails = () => {
 			<h2 className="text-2xl mb-5">
 				{course?.name} {course?.course_code}
 			</h2>
-			<div className="flex justify-center" onClick={handleAddCourseClick}>
+			<div
+				className="flex justify-center w-1/3 mb-4"
+				onClick={handleAddCourseClick}
+			>
 				<Button buttonText={FORM_BUTTON_TEXT.ASSIGN} />
 			</div>
 			<div className="flex flex-wrap w-full justify-center">
 				{course?.students.map((student) => (
-					<div
-						key={student.id}
-						className={`flex flex-col justify-center items-center m-2 p-2 text-center text-white w-1/4 min-w-[12rem] h-20 rounded-md
-            ${student.StudentCourse.grade === 0 && `bg-red-500`}
-            ${student.StudentCourse.grade === 1 && `bg-orange-500`}
-            ${student.StudentCourse.grade === 2 && `bg-yellow-500`}
-            ${student.StudentCourse.grade === 3 && `bg-green-500`}
-            ${student.StudentCourse.grade === 4 && `bg-green-600`}
+					<Link to={`${ROUTES.STUDENTS}/${student.id}`} key={student.id}>
+						<div
+							className={`flex flex-col justify-center items-center m-2 p-2 text-center text-white w-1/4 min-w-[12rem] h-20 rounded-md hover:text-cyan-500 border-2 border-solid ease-in-out duration-300 border-cyan-600 hover:border-slate-300
             `}
-					>
-						<Link to={`${ROUTES.STUDENTS}/${student.id}`}>
+						>
 							<div>
 								{student.first_name} {student.last_name}
 							</div>
-							<div>Grade: {GRADES_MAP[`${student.StudentCourse.grade}`]}</div>
-						</Link>
-					</div>
+							<div>
+								Grade:{' '}
+								<span
+									className={`font-bold
+									${student.StudentCourse.grade === 0 && `text-red-500`}
+									${student.StudentCourse.grade === 1 && `text-orange-500`}
+            			${student.StudentCourse.grade === 2 && `text-yellow-500`}
+            			${student.StudentCourse.grade === 3 && `text-green-500`}
+            			${student.StudentCourse.grade === 4 && `text-green-600`}
+									`}
+								>
+									{GRADES_MAP[`${student.StudentCourse.grade}`]}
+								</span>
+							</div>
+						</div>
+					</Link>
 				))}
 			</div>
 		</div>

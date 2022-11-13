@@ -24,15 +24,14 @@ const ViewCourses = () => {
 			<h1 className="text-4xl mb-5">Current Courses</h1>
 			<div className="flex flex-wrap justify-center">
 				{courses.map((course) => (
-					<div
+					<Link
+						to={`${ROUTES.COURSES}/${course.id}`}
 						key={course.id}
-						className="flex flex-col justify-center items-center h-[10rem] w-[10rem] border border-solid border-cyan-600 rounded-md p-2 m-1"
+						className="flex flex-col justify-center items-center h-[10rem] w-[10rem] hover:text-cyan-500 border-2 border-solid ease-in-out duration-300 border-cyan-600 hover:border-slate-300 rounded-md p-2 m-2 "
 					>
-						<Link to={`${ROUTES.COURSES}/${course.id}`}>
-							<h2 className="text-xl">{course.name}</h2>
-							<h3>{course.course_code}</h3>
-						</Link>
-					</div>
+						<h2 className="text-xl">{course.name}</h2>
+						<h3 className="">{course.course_code}</h3>
+					</Link>
 				))}
 			</div>
 		</div>
