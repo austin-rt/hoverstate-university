@@ -10,7 +10,7 @@ const AssignCourseModal = ({
 	assignCourseModalVisibility,
 	toggleAssignCourseModalVisibility,
 	dataToEdit,
-	getStudent
+	getCourse
 }) => {
 	if (!assignCourseModalVisibility) return null;
 
@@ -33,7 +33,7 @@ const AssignCourseModal = ({
 				initialFormState={dataToEdit}
 				buttonText={FORM_BUTTON_TEXT.ASSIGN}
 				dataToEdit={dataToEdit}
-				getStudent={getStudent}
+				getCourse={getCourse}
 			/>
 		</div>
 	);
