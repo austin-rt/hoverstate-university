@@ -3,7 +3,7 @@ import { Navigation } from './navigation/Navigation';
 
 function App() {
 	return (
-		<div className="w-[100vw] h-[100vh]">
+		<div className="bg-slate-800 text-slate-300">
 			<NavBar />
 			<Navigation />
 		</div>

@@ -26,7 +26,7 @@ const ViewCourses = () => {
 				{courses.map((course) => (
 					<div
 						key={course.id}
-						className="flex flex-col justify-center items-center h-[6rem] w-[8rem] border border-solid bg-blue-500 text-white text-sm rounded-md p-2 m-1"
+						className="flex flex-col justify-center items-center h-[6rem] w-[8rem] border border-solid text-sm rounded-md p-2 m-1"
 					>
 						<Link to={`${ROUTES.COURSES}/${course.id}`}>
 							<h2>{course.name}</h2>
