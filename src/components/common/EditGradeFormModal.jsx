@@ -34,7 +34,7 @@ const EditGradeFormModal = ({
 				buttonText={FORM_BUTTON_TEXT.SUBMIT}
 				dataToEdit={dataToEdit}
 				closeModal={closeModal}
-				getStudent={getStudent}
+				getData={getStudent}
 			/>
 		</div>
 	);

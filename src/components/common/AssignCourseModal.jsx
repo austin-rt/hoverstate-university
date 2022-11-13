@@ -33,7 +33,7 @@ const AssignCourseModal = ({
 				initialFormState={dataToEdit}
 				buttonText={FORM_BUTTON_TEXT.ASSIGN}
 				dataToEdit={dataToEdit}
-				getCourse={getCourse}
+				getData={getCourse}
 			/>
 		</div>
 	);

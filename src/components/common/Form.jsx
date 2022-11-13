@@ -15,7 +15,7 @@ const Form = ({
 	dataToEdit,
 	buttonText,
 	closeModal,
-	getStudent,
+	getData,
 	initialFormState
 }) => {
 	const { setFormState, handleChange, handleSubmit, formState } = useForm(
@@ -30,13 +30,13 @@ const Form = ({
 
 	const handleEditSubmit = (e) => {
 		handleSubmit(e);
-		getStudent();
+		getData();
 		closeModal();
 	};
 
 	const handleAssignCourseSubmit = (e) => {
 		handleSubmit(e);
-		getStudent();
+		getData();
 		closeModal();
 	};
 

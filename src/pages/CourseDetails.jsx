@@ -27,7 +27,8 @@ const CourseDetails = () => {
 		} catch (err) {
 			console.log(err);
 		}
-	}, [id]);
+		// eslint-disable-next-line
+	}, [id, assignCourseModalVisibility]);
 
 	useEffect(() => {
 		getCourse();
