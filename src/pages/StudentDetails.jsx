@@ -69,14 +69,13 @@ const StudentDetails = () => {
 				{student?.first_name} {student?.last_name}
 			</h1>
 			<h2
-				className={`text-white rounded-sm p-2
+				className={`text-white rounded-md p-2 mb-5
 				${studentGPA < 1 && `bg-red-500`}
 				${studentGPA < 2 && `bg-orange-500`}
 				${studentGPA < 3 && `bg-yellow-500`}
 				${studentGPA > 3 && `bg-green-500`}`}
 			>
-				GPA:
-				<span className="font-bold">{studentGPA}</span>
+				GPA: <span className="font-bold">{` ${studentGPA}`}</span>
 			</h2>
 			<div className="flex justify-center" onClick={handleAddCourseClick}>
 				<Button buttonText={FORM_BUTTON_TEXT.ASSIGN} />

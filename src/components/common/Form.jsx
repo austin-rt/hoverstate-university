@@ -103,32 +103,30 @@ const Form = ({
 			form = (
 				<form
 					onSubmit={handleEditSubmit}
-					className="flex flex-col items-center"
+					className="flex flex-col items-center w-2/3 h-3/4"
 				>
-					<div className="flex flex-col place-content-between">
-						{dataToEdit?.course.map((course) => (
-							<div key={course.id} className="flex flex-col items-center">
-								<div className="text-2xl">
-									{`${dataToEdit.student.first_name} ${dataToEdit.student.last_name}`}
-								</div>
-								<div className="text-xl">{course.name}</div>
-								<div>{course.course_code}</div>
-								<select
-									defaultValue={parseInt(course.StudentCourse.grade)}
-									name="grade"
-									onChange={handleChange}
-									className="w-max-content bg-transparent outline-1 outline-white outline rounded-sm py-1 px-2"
-								>
-									<option value={4}>A</option>
-									<option value={3}>B</option>
-									<option value={2}>C</option>
-									<option value={1}>D</option>
-									<option value={0}>F</option>
-								</select>
-							</div>
-						))}
-						<Button buttonText={buttonText} />
+					<div className="text-2xl mb-2">
+						{`${dataToEdit.student.first_name} ${dataToEdit.student.last_name}`}
 					</div>
+					{dataToEdit?.course.map((course) => (
+						<div key={course.id} className="m-2">
+							<div className="text-xl">{course.name}</div>
+							<div className="m-2">{course.course_code}</div>
+							<select
+								defaultValue={parseInt(course.StudentCourse.grade)}
+								name="grade"
+								onChange={handleChange}
+								className="w-max-content m-2 bg-transparent outline-1 outline-white outline rounded-sm py-1 px-2"
+							>
+								<option value={4}>A</option>
+								<option value={3}>B</option>
+								<option value={2}>C</option>
+								<option value={1}>D</option>
+								<option value={0}>F</option>
+							</select>
+						</div>
+					))}
+					<Button buttonText={buttonText} />
 				</form>
 			);
 			break;
@@ -136,58 +134,58 @@ const Form = ({
 			form = (
 				<form
 					onSubmit={handleAssignCourseSubmit}
-					className="flex flex-col items-center w-2/3"
+					className="flex flex-col justify-between items-center w-2/3 h-3/4"
 				>
-					<div className="flex flex-col justify-center items-center">
-						{dataToEdit.first_name ? (
-							<div className="flex flex-col justify-center items-center">
+					{dataToEdit.first_name ? (
+						<>
+							<div className="text-2xl">
 								{dataToEdit.first_name} {dataToEdit.last_name}
-								<select
-									defaultValue={courses && parseInt(courses[0].id)}
-									name="courseId"
-									onChange={handleChange}
-									className="w-full bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
-								>
-									{courses?.map((course) => (
-										<option key={course.id} value={parseInt(course.id)}>
-											{course.name}
-										</option>
-									))}
-								</select>
 							</div>
-						) : (
+							<select
+								defaultValue={courses && parseInt(courses[0].id)}
+								name="courseId"
+								onChange={handleChange}
+								className="w-full bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
+							>
+								{courses?.map((course) => (
+									<option key={course.id} value={parseInt(course.id)}>
+										{course.name}
+									</option>
+								))}
+							</select>
+						</>
+					) : (
+						<>
 							<div>
-								<div>
-									{dataToEdit?.name} {dataToEdit?.course_code}
-								</div>
-								<select
-									defaultValue={students && parseInt(students[0].id)}
-									name="studentId"
-									onChange={handleChange}
-									className="w-max-content bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
-								>
-									{students?.map((student) => (
-										<option
-											key={student.id}
-											value={parseInt(student.id)}
-										>{`${student.first_name} ${student.last_name}`}</option>
-									))}
-								</select>
+								{dataToEdit?.name} {dataToEdit?.course_code}
 							</div>
-						)}
-						<select
-							defaultValue={parseInt(4)}
-							name="grade"
-							onChange={handleChange}
-							className="w-max-content bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
-						>
-							<option value={parseInt(4)}>A</option>
-							<option value={parseInt(3)}>B</option>
-							<option value={parseInt(2)}>C</option>
-							<option value={parseInt(1)}>D</option>
-							<option value={parseInt(0)}>F</option>
-						</select>
-					</div>
+							<select
+								defaultValue={students && parseInt(students[0].id)}
+								name="studentId"
+								onChange={handleChange}
+								className="w-max-content bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
+							>
+								{students?.map((student) => (
+									<option
+										key={student.id}
+										value={parseInt(student.id)}
+									>{`${student.first_name} ${student.last_name}`}</option>
+								))}
+							</select>
+						</>
+					)}
+					<select
+						defaultValue={parseInt(4)}
+						name="grade"
+						onChange={handleChange}
+						className="w-max-content bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
+					>
+						<option value={parseInt(4)}>A</option>
+						<option value={parseInt(3)}>B</option>
+						<option value={parseInt(2)}>C</option>
+						<option value={parseInt(1)}>D</option>
+						<option value={parseInt(0)}>F</option>
+					</select>
 					<Button buttonText={buttonText} />
 				</form>
 			);
@@ -213,6 +211,6 @@ const Form = ({
 				</form>
 			);
 	}
-	return <div className="flex justify-center text-center ">{form}</div>;
+	return <div className="flex justify-center text-center h-full">{form}</div>;
 };
 export default Form;
