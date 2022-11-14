@@ -105,18 +105,18 @@ const Form = ({
 					onSubmit={handleEditSubmit}
 					className="flex flex-col items-center w-2/3 h-3/4"
 				>
-					<div className="text-2xl mb-2">
+					<div className="text-2xl">
 						{`${dataToEdit.student.first_name} ${dataToEdit.student.last_name}`}
 					</div>
 					{dataToEdit?.course.map((course) => (
-						<div key={course.id} className="m-2">
-							<div className="text-xl">{course.name}</div>
-							<div className="m-2">{course.course_code}</div>
+						<div key={course.id} className="m-2 w-full">
+							<div className="text-l">{course.name}</div>
+							<div className="m-2 text-sm">{course.course_code}</div>
 							<select
 								defaultValue={parseInt(course.StudentCourse.grade)}
 								name="grade"
 								onChange={handleChange}
-								className="w-max-content m-2 bg-transparent outline-1 outline-white outline rounded-sm py-1 px-2"
+								className="w-max-content m-2 bg-transparent border border-solid border-cyan-500 rounded-sm py-1 px-2"
 							>
 								<option value={4}>A</option>
 								<option value={3}>B</option>
@@ -145,7 +145,7 @@ const Form = ({
 								defaultValue={courses && parseInt(courses[0].id)}
 								name="courseId"
 								onChange={handleChange}
-								className="w-full bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
+								className="w-full bg-transparent border border-solid border-cyan-500 text-center rounded-sm m-2 py-1 px-2"
 							>
 								{courses?.map((course) => (
 									<option key={course.id} value={parseInt(course.id)}>
@@ -163,7 +163,7 @@ const Form = ({
 								defaultValue={students && parseInt(students[0].id)}
 								name="studentId"
 								onChange={handleChange}
-								className="w-max-content bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
+								className="w-max-content bg-transparent border border-solid border-cyan-500 rounded-sm m-2 py-1 px-2"
 							>
 								{students?.map((student) => (
 									<option
@@ -178,7 +178,7 @@ const Form = ({
 						defaultValue={parseInt(4)}
 						name="grade"
 						onChange={handleChange}
-						className="w-max-content bg-transparent outline-1 outline-white outline rounded-sm m-2 py-1 px-2"
+						className="w-max-content bg-transparent border border-solid border-cyan-500 rounded-sm m-2 py-1 px-2"
 					>
 						<option value={parseInt(4)}>A</option>
 						<option value={parseInt(3)}>B</option>

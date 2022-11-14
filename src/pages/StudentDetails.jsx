@@ -9,7 +9,7 @@ import {
 	FORM_BUTTON_TEXT,
 	FORM_TYPES
 } from '../utils/constants';
-import { average, getGrades } from '../utils/utils';
+import { average, getGrades } from '../utils/helpers';
 import EditGradeFormModal from '../components/common/EditGradeFormModal';
 import Button from '../components/common/Button';
 import AssignCourseModal from '../components/common/AssignCourseModal';

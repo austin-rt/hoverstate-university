@@ -19,7 +19,7 @@ const AssignCourseModal = ({
 	};
 
 	return (
-		<div className="fixed w-2/3 max-w-md h-1/3 flex flex-col justify-start bg-gray-500 text-white rounded-lg">
+		<div className="fixed w-2/3 max-w-md h-1/3 flex flex-col justify-start bg-gradient-to-br from-slate-600 to-slate-800 rounded-lg border border-solid border-cyan-500">
 			<div>
 				<AiOutlineCloseCircle
 					onClick={closeModal}
