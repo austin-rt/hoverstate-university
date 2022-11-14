@@ -65,19 +65,20 @@ const StudentDetails = () => {
 				dataToEdit={{ ...selectedCourse, type: FORM_TYPES.GRADE.EDIT }}
 				getStudent={getStudent}
 			/>
-			<h1 className="text-3xl mb-5">
+
+			<h1 className="text-3xl mb-2">
 				{student?.first_name} {student?.last_name}
 			</h1>
-			<h2
-				className={`text-white rounded-md p-2 mb-5
-				${studentGPA < 1 && `bg-red-500`}
-				${studentGPA < 2 && `bg-orange-500`}
-				${studentGPA < 3 && `bg-yellow-500`}
-				${studentGPA > 3 && `bg-green-500`}`}
-			>
-				GPA: <span className="font-bold">{` ${studentGPA}`}</span>
+			<h2 className="rounded-md p-2 mb-2">
+				GPA:{' '}
+				<span
+					className={`font-bold ${studentGPA < 1 && `text-red-500`}
+				${studentGPA < 2 && `text-orange-500`}
+				${studentGPA < 3 && `text-yellow-500`}
+				${studentGPA > 3 && `text-green-500`}`}
+				>{` ${studentGPA}`}</span>
 			</h2>
-			<div className="flex justify-center" onClick={handleAddCourseClick}>
+			<div className="flex justify-center mb-5" onClick={handleAddCourseClick}>
 				<Button buttonText={FORM_BUTTON_TEXT.ASSIGN} />
 			</div>
 			<div className="flex flex-wrap w-full justify-center">

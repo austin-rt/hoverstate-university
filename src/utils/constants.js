@@ -115,7 +115,8 @@ export const FORM_BUTTON_TEXT = {
 	SEARCH: 'Search',
 	SUBMIT: 'Submit',
 	ASSIGN: 'Assign Student to Course',
-	ADD_COURSE: 'Add Course'
+	ADD_COURSE: 'Add a Course',
+	ADD_STUDENT: 'Add a Student'
 };
 
 export const GRADES_MAP = {
