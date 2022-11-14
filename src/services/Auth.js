@@ -4,8 +4,7 @@ import Client from './api';
 export const SignInCall = async (data) => {
 	try {
 		const res = await Client.post(`${API_ENDPOINTS.AUTH.LOGIN}`, data);
-		localStorage.setItem('token', res.data.token);
-		return res.data.user;
+		return res.data;
 	} catch (err) {
 		throw err;
 	}

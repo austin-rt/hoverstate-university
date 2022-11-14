@@ -8,6 +8,8 @@ import {
 	ROUTES
 } from '../utils/constants';
 import { SignInCall, SignUpCall } from '../services/Auth';
+import { setAuthenticatedUser, clearUserInformation } from '../redux/UserSlice';
+import { useDispatch } from 'react-redux';
 
 const useForm = (
 	type,
@@ -16,6 +18,7 @@ const useForm = (
 		password: ''
 	}
 ) => {
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	const [formState, setFormState] = useState(initialFormState);
@@ -26,7 +29,8 @@ const useForm = (
 		switch (type) {
 			case FORM_TYPES.AUTH.LOGIN:
 				try {
-					await SignInCall({ ...formState });
+					const user = await SignInCall({ ...formState });
+					dispatch(setAuthenticatedUser({ ...user }));
 					navigate(ROUTES.HOME);
 				} catch (err) {
 					console.log(err);
