@@ -8,7 +8,7 @@ const Dashboard = () => {
 	return (
 		<div className="flex flex-col justify-center items-center w-full h-full">
 			<h1 className="text-3xl font-semibold">
-				Welcome! {user && user.username}
+				Welcome{user && ` ${user.username}`}!
 			</h1>
 			<div className="flex flex-wrap w-2/3 text-slate-200 text-2xl font-medium justify-center">
 				<Link to={ROUTES.COURSES}>
