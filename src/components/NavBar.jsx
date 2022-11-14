@@ -15,7 +15,7 @@ const NavBar = () => {
 				Students
 			</Link>
 			{user ? (
-				<div onClick={signOutCall} className="cursor-pointer">
+				<div onClick={signOutCall} className="m-3 cursor-pointer">
 					Logout
 				</div>
 			) : (
