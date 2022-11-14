@@ -195,19 +195,21 @@ const Form = ({
 				<form onSubmit={handleSubmit} className="flex flex-col items-center">
 					<div>
 						{inputs.map((input) => (
-							<div key={input.name} className="flex flex-col items-center">
+							<div key={input.name} className="flex flex-col items-center mt-5">
 								<input
 									key={input.name}
 									type={input.type}
 									name={input.name}
 									placeholder={input.placeholder}
 									onChange={handleChange}
-									className="m-2 rounded py-1 px-3 w-full"
+									className="m-2 rounded py-2 px-3 w-full bg-transparent text-center border border-cyan-500 border-solid"
 								/>
 							</div>
 						))}
 					</div>
-					<Button buttonText={buttonText} />
+					<div className="m-5">
+						<Button buttonText={buttonText} />
+					</div>
 				</form>
 			);
 	}

@@ -8,9 +8,9 @@ import {
 
 const AddStudent = () => {
 	return (
-		<div className="flex flex-col justify-center items-center">
-			<div>Add a student to the registery</div>
-			<div>
+		<div className="flex flex-col justify-center items-center h-full">
+			<h1 className="text-3xl mb-5">Add a Student to the Registery</h1>
+			<div className="flex flex-col justify-start items-center h-3/4 w-1/3 min-w-[15rem] border border-solid border-cyan-500 bg-transparent text-sm rounded-md m-1">
 				<Form
 					inputs={FORM_INPUT_ARRAYS.STUDENT}
 					type={FORM_TYPES.STUDENT.ADD}
