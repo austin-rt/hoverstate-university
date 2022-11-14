@@ -7,6 +7,7 @@ import {
 	FORM_TYPES,
 	ROUTES
 } from '../utils/constants';
+import { SignInCall, SignUpCall } from '../services/Auth';
 
 const useForm = (
 	type,
@@ -23,20 +24,17 @@ const useForm = (
 		e.preventDefault();
 
 		switch (type) {
-			case FORM_TYPES.LOGIN:
+			case FORM_TYPES.AUTH.LOGIN:
 				try {
-					await axios.post(`${BASE_URL}${API_ENDPOINTS.AUTH.LOGIN}`, formState);
+					await SignInCall({ ...formState });
 					navigate(ROUTES.HOME);
 				} catch (err) {
 					console.log(err);
 				}
 				break;
-			case FORM_TYPES.REGISTER:
+			case FORM_TYPES.AUTH.REGISTER:
 				try {
-					await axios.post(
-						`${BASE_URL}${API_ENDPOINTS.AUTH.REGISTER}`,
-						formState
-					);
+					await SignUpCall({ ...formState });
 					navigate(ROUTES.LOGIN);
 				} catch (err) {
 					console.log(err);

@@ -16,7 +16,8 @@ export const BASE_URL = 'https://hoverstate-university.up.railway.app/api/v1';
 export const API_ENDPOINTS = {
 	AUTH: {
 		REGISTER: '/auth/register',
-		LOGIN: '/auth/login'
+		LOGIN: '/auth/login',
+		CHECK_SESSION: '/auth/session'
 	},
 	USERS: {
 		GET: '/users'
