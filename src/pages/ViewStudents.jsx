@@ -4,7 +4,8 @@ import {
 	BASE_URL,
 	API_ENDPOINTS,
 	ROUTES,
-	GRADES_MAP
+	GRADES_MAP,
+	FORM_BUTTON_TEXT
 } from '../utils/constants';
 import { Link } from 'react-router-dom';
 
@@ -31,9 +32,9 @@ const ViewStudents = () => {
 				{students?.map((student) => (
 					<div
 						key={student.id}
-						className="flex flex-col justify-start items-center h-max-content w-1/5 min-w-[15rem] border border-solid bg-blue-500 text-white text-sm rounded-md m-1"
+						className="flex flex-col justify-start items-center h-max-content w-1/5 min-w-[15rem] border border-solid bg-transparent text-sm rounded-md m-1"
 					>
-						<h2 className="flex justify-center items-center bg-gray-500 h-12 text-lg w-full rounded-t-md">
+						<h2 className="flex justify-center items-center bg-cyan-500 h-12 text-lg w-full rounded-t-md">
 							<Link to={`${ROUTES.STUDENTS}/${student.id}`}>
 								{student.first_name} {student.last_name}
 							</Link>
@@ -42,24 +43,33 @@ const ViewStudents = () => {
 							<div className="text-base">Courses:</div>
 							<div className="flex flex-col items-center">
 								{student.courses.map((course) => (
-									<div
+									<Link
+										to={`${ROUTES.COURSES}/${course.id}`}
 										key={course.id}
-										className={`m-2 p-2 text-center text-white w-5/6 rounded-md
-                      ${course.StudentCourse.grade === 0 && `bg-red-500`}
-            ${course.StudentCourse.grade === 1 && `bg-orange-500`}
-            ${course.StudentCourse.grade === 2 && `bg-yellow-500`}
-            ${course.StudentCourse.grade === 3 && `bg-green-600`}
-            ${course.StudentCourse.grade === 4 && `bg-green-500`}
-                    `}
+										className="flex flex-col items-center w-full"
 									>
-										<Link to={`${ROUTES.COURSES}/${course.id}`}>
-											<div>{course.name} </div>
-										</Link>
-										<div>{course.course_code}</div>
-										<div>
-											Grade: {GRADES_MAP[`${course.StudentCourse.grade}`]}
+										<div
+											className={
+												'm-2 p-2 text-center w-5/6 rounded-md border border-solid border-cyan-500 hover:border-slate-300 ease-in-out duration-300 hover:text-cyan-500'
+											}
+										>
+											<div>{course.course_code}</div>
+											<div>
+												Grade:{' '}
+												<span
+													className={` font-bold
+													${course.StudentCourse.grade === 0 && `text-red-500`}
+            							${course.StudentCourse.grade === 1 && `text-orange-500`}
+            							${course.StudentCourse.grade === 2 && `text-yellow-500`}
+            							${course.StudentCourse.grade === 3 && `text-green-600`}
+            							${course.StudentCourse.grade === 4 && `text-green-500`}
+                    		`}
+												>
+													{GRADES_MAP[`${course.StudentCourse.grade}`]}
+												</span>
+											</div>
 										</div>
-									</div>
+									</Link>
 								))}
 							</div>
 						</div>
