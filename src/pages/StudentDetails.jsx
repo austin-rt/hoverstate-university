@@ -57,13 +57,13 @@ const StudentDetails = () => {
 				assignCourseModalVisibility={assignCourseModalVisibility}
 				toggleAssignCourseModalVisibility={toggleAssignCourseModalVisibility}
 				dataToEdit={{ ...student, type: FORM_TYPES.GRADE.ADD }}
-				getStudent={getStudent}
+				getData={getStudent}
 			/>
 			<EditGradeFormModal
 				editGradeModalVisibility={editGradeModalVisibility}
 				toggleEditGradeModalVisibility={toggleEditGradeModalVisibility}
 				dataToEdit={{ ...selectedCourse, type: FORM_TYPES.GRADE.EDIT }}
-				getStudent={getStudent}
+				getData={getStudent}
 			/>
 
 			<h1 className="text-3xl mb-2">
@@ -72,10 +72,12 @@ const StudentDetails = () => {
 			<h2 className="rounded-md p-2 mb-2">
 				GPA:{' '}
 				<span
-					className={`font-bold ${studentGPA < 1 && `text-red-500`}
-				${studentGPA < 2 && `text-orange-500`}
-				${studentGPA < 3 && `text-yellow-500`}
-				${studentGPA > 3 && `text-green-500`}`}
+					className={`font-bold
+					${studentGPA <= 1 ? `text-red-500` : ''}
+					${studentGPA > 1 && studentGPA <= 2 ? `text-orange-500` : ''}
+					${studentGPA > 2 && studentGPA <= 3 ? `text-yellow-500` : ''}
+					${studentGPA >= 3 ? `text-green-500` : ''}
+					`}
 				>{` ${studentGPA}`}</span>
 			</h2>
 			<div className="flex justify-center mb-5" onClick={handleAddCourseClick}>
@@ -85,25 +87,34 @@ const StudentDetails = () => {
 				{student?.courses?.map((course) => (
 					<div
 						key={course.id}
-						className={`flex flex-col justify-center items-center min-w-[15rem] m-4 p-4 text-center text-white w-1/4 rounded-md
-            ${course.StudentCourse.grade === 0 && `bg-red-500`}
-            ${course.StudentCourse.grade === 1 && `bg-orange-500`}
-            ${course.StudentCourse.grade === 2 && `bg-yellow-500`}
-            ${course.StudentCourse.grade === 3 && `bg-green-600`}
-            ${course.StudentCourse.grade === 4 && `bg-green-500`}
-            `}
+						className={`flex flex-col justify-center items-center min-w-[15rem] m-4 p-4 text-center w-1/4 rounded-md hover:text-cyan-500 border-2 border-solid ease-in-out duration-300 border-cyan-600 hover:border-slate-300`}
 					>
 						<Link to={`${ROUTES.COURSES}/${course.id}`}>
 							<div>{course.name} </div>
 							<div> {course.course_code}</div>
 						</Link>
-						<div>Grade: {GRADES_MAP[`${course.StudentCourse.grade}`]}</div>
-						<button
-							onClick={() => handleEditClick(course)}
-							className="bg-gray-500 py-1 px-4 mt-2 rounded-md"
-						>
-							Edit Grade
-						</button>
+						<div>
+							Grade:
+							<span
+								className={`font-bold
+								${course.StudentCourse.grade === 0 && `text-red-500`}
+            		${course.StudentCourse.grade === 1 && `text-orange-500`}
+            		${course.StudentCourse.grade === 2 && `text-yellow-500`}
+           			${course.StudentCourse.grade === 3 && `text-green-600`}
+            		${course.StudentCourse.grade === 4 && `text-green-500`}`}
+							>{` ${GRADES_MAP[`${course.StudentCourse.grade}`]}`}</span>
+						</div>
+						<div className="flex items-center">
+							<div
+								onClick={() => handleEditClick(course)}
+								className="w-full m-2"
+							>
+								<Button buttonText={FORM_BUTTON_TEXT.EDIT_GRADE} />
+							</div>
+							{/* <div className="w-full">
+								<Button buttonText={FORM_BUTTON_TEXT.DELETE} />
+							</div> */}
+						</div>
 					</div>
 				))}
 			</div>

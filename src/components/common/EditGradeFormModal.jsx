@@ -11,7 +11,7 @@ const EditGradeFormModal = ({
 	editGradeModalVisibility,
 	toggleEditGradeModalVisibility,
 	dataToEdit,
-	getStudent
+	getData
 }) => {
 	if (!editGradeModalVisibility) return null;
 
@@ -34,7 +34,7 @@ const EditGradeFormModal = ({
 				buttonText={FORM_BUTTON_TEXT.SUBMIT}
 				dataToEdit={dataToEdit}
 				closeModal={closeModal}
-				getData={getStudent}
+				getData={getData}
 			/>
 		</div>
 	);

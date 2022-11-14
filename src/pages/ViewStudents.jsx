@@ -42,19 +42,33 @@ const ViewStudents = () => {
 						className="flex flex-col justify-start items-center h-max-content w-1/5 min-w-[20rem] border border-solid hover:border-cyan-500 bg-transparent text-sm rounded-md m-4"
 					>
 						<Link to={`${ROUTES.STUDENTS}/${student.id}`} className="w-full">
-							<div className="flex flex-col justify-center items-center bg-cyan-500 h-20 text-lg w-full rounded-t-md hover:bg-transparent ease-in-out duration-300 border-b border-transparent border-solid hover:text-cyan-500 hover:border-cyan-500">
+							<div className="flex flex-col justify-center items-center bg-cyan-600 h-20 text-lg w-full rounded-t-md hover:bg-transparent ease-in-out duration-300 border-b border-transparent border-solid hover:text-cyan-500 hover:border-cyan-500">
 								<div className="w-full flex flex-col justify-center items-center text-2xl">
 									{student.first_name} {student.last_name}
 									<div className="text-sm">
 										GPA:
 										<span
-											className={`font-bold m-2 ${
-												parseFloat(average(getGrades(student)).toFixed(2)) <
-													1 && `text-red-500`
+											className={`font-bold m-2
+											${parseFloat(average(getGrades(student)).toFixed(2)) <= 1 ? `text-red-400` : ''}
+											${
+												parseFloat(average(getGrades(student)).toFixed(2)) <=
+													2 &&
+												parseFloat(average(getGrades(student)).toFixed(2)) > 1
+													? `text-orange-400`
+													: ''
 											}
-									${parseFloat(average(getGrades(student)).toFixed(2)) < 2 && `text-orange-500`}
-									${parseFloat(average(getGrades(student)).toFixed(2)) < 3 && `text-yellow-500`}
-									${parseFloat(average(getGrades(student)).toFixed(2)) > 3 && `text-green-500`}`}
+											${
+												parseFloat(average(getGrades(student)).toFixed(2)) <=
+													3 &&
+												parseFloat(average(getGrades(student)).toFixed(2)) > 2
+													? `text-yellow-400`
+													: ''
+											}
+											${
+												parseFloat(average(getGrades(student)).toFixed(2)) >= 3
+													? `text-green-400`
+													: ''
+											}`}
 										>
 											{parseFloat(average(getGrades(student)).toFixed(2))}
 										</span>

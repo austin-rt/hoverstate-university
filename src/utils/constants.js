@@ -37,7 +37,8 @@ export const API_ENDPOINTS = {
 	STUDENT_COURSES: {
 		GET_BY_STUDENT_ID: '/student-courses',
 		EDIT_GRADE: '/student-courses/grade',
-		ASSIGN_STUDENT_TO_COURSE: '/student-courses/assign'
+		ASSIGN_STUDENT_TO_COURSE: '/student-courses/assign',
+		DELETE: '/student-courses/:id'
 	}
 };
 
@@ -117,7 +118,9 @@ export const FORM_BUTTON_TEXT = {
 	SUBMIT: 'Submit',
 	ASSIGN: 'Assign Student to Course',
 	ADD_COURSE: 'Add a Course to the Registry',
-	ADD_STUDENT: 'Add a Student to the Registry'
+	EDIT_GRADE: 'Edit',
+	ADD_STUDENT: 'Add a Student to the Registry',
+	DELETE: 'Delete'
 };
 
 export const GRADES_MAP = {

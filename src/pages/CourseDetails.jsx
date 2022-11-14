@@ -44,7 +44,7 @@ const CourseDetails = () => {
 				assignCourseModalVisibility={assignCourseModalVisibility}
 				toggleAssignCourseModalVisibility={toggleAssignCourseModalVisibility}
 				dataToEdit={{ ...course, type: FORM_TYPES.GRADE.ADD }}
-				getCourse={getCourse}
+				getData={getCourse}
 			/>
 			<h2 className="text-2xl mb-5">
 				{course?.name} {course?.course_code}
@@ -59,8 +59,7 @@ const CourseDetails = () => {
 				{course?.students.map((student) => (
 					<Link to={`${ROUTES.STUDENTS}/${student.id}`} key={student.id}>
 						<div
-							className={`flex flex-col justify-center items-center m-2 p-2 text-center text-white w-1/4 min-w-[12rem] h-20 rounded-md hover:text-cyan-500 border-2 border-solid ease-in-out duration-300 border-cyan-600 hover:border-slate-300
-            `}
+							className={`flex flex-col justify-center items-center m-2 p-2 text-center w-1/4 min-w-[12rem] h-20 rounded-md hover:text-cyan-500 border-2 border-solid ease-in-out duration-300 border-cyan-600 hover:border-slate-300`}
 						>
 							<div>
 								{student.first_name} {student.last_name}
