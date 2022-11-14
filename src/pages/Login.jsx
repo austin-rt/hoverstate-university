@@ -8,12 +8,15 @@ import {
 
 const Login = () => {
 	return (
-		<Form
-			type={FORM_TYPES.AUTH.LOGIN}
-			inputs={FORM_INPUT_ARRAYS.AUTH}
-			initialFormState={DEFAULT_FORM_VALUES.LOGIN}
-			buttonText={FORM_BUTTON_TEXT.LOGIN}
-		/>
+		<div className="flex flex-col items-center justify-center text-center">
+			<h1 className="text-3xl">Login</h1>
+			<Form
+				type={FORM_TYPES.AUTH.LOGIN}
+				inputs={FORM_INPUT_ARRAYS.AUTH}
+				initialFormState={DEFAULT_FORM_VALUES.LOGIN}
+				buttonText={FORM_BUTTON_TEXT.LOGIN}
+			/>
+		</div>
 	);
 };
 export default Login;
