@@ -20,11 +20,11 @@ const Login = () => {
 			) : (
 				<div className="flex flex-col items-center justify-center text-center">
 					<Lottie
-						className="relative h-1/4 -mt-[6rem] z-50"
+						className="relative h-1/4 -mt-[6rem] z-0"
 						animationData={Lock}
 						loop={false}
 					/>
-					<div className="-mt-[6rem]">
+					<div className="-mt-[4.5rem]">
 						<h1 className="text-3xl">Login</h1>
 					</div>
 					<Form
