@@ -34,7 +34,7 @@ Hoverstate University is a simple full-stack test project built using a PostgreS
 
 #### **_Component Hierarchy Diagram:_**
 
-![Component Hierarchy Diagram](./assets/images/png/hoverstate-university-CHD.png 'Component Hierarchy Diagram')
+![Component Hierarchy Diagram](./assets/images/png/hoverstate_university_CHD.png 'Component Hierarchy Diagram')
 
 ### **_License_**
 
