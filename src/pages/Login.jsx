@@ -20,21 +20,12 @@ const Login = () => {
 			) : (
 				<div className="flex flex-col items-center justify-center text-center">
 					<Lottie
-						className="h-1/4 -mt-[6rem]"
+						className="relative h-1/4 -mt-[6rem] z-50"
 						animationData={Lock}
 						loop={false}
 					/>
 					<div className="-mt-[6rem]">
 						<h1 className="text-3xl">Login</h1>
-						<h2 className="text-xl mt-3">
-							or{' '}
-							<Link
-								to={ROUTES.REGISTER}
-								className="hover:text-cyan-600 ease-in-out duration-300"
-							>
-								Register
-							</Link>
-						</h2>
 					</div>
 					<Form
 						type={FORM_TYPES.AUTH.LOGIN}
@@ -45,6 +36,15 @@ const Login = () => {
 				</div>
 			)}
 			<div className="flex flex-col items-center justify-center text-sm text-slate-400">
+				<h2 className="text-xl mt-3 text-slate-300 mb-4">
+					or{' '}
+					<Link
+						to={ROUTES.REGISTER}
+						className="hover:text-cyan-600 ease-in-out duration-300"
+					>
+						Register
+					</Link>
+				</h2>
 				<div>username: admin</div>
 				<div>password: admin</div>
 			</div>
