@@ -15,22 +15,22 @@ const Dashboard = () => {
 			</h1>
 			<div className="flex flex-wrap w-3/4 text-2xl font-medium items-centertext-center justify-center">
 				<Link to={ROUTES.COURSES}>
-					<div className="py-2 px-4 m-5 border-2 border-transparent border-solid bg-cyan-500 ease-in-out duration-300 hover:bg-transparent hover:text-cyan-500 hover:border-cyan-500 rounded-md">
+					<div className="py-2 px-4 m-5 border-2 border-transparent border-solid bg-cyan-600 ease-in-out duration-300 hover:bg-transparent hover:text-cyan-600 hover:border-cyan-600 rounded-md">
 						View Courses
 					</div>
 				</Link>
 				<Link to={ROUTES.STUDENTS}>
-					<div className="py-2 px-4 m-5 border-2 border-transparent border-solid bg-cyan-500 ease-in-out duration-300 hover:bg-transparent hover:text-cyan-500 hover:border-cyan-500 rounded-md">
+					<div className="py-2 px-4 m-5 border-2 border-transparent border-solid bg-cyan-600 ease-in-out duration-300 hover:bg-transparent hover:text-cyan-600 hover:border-cyan-600 rounded-md">
 						View Students
 					</div>
 				</Link>
 				<Link to={ROUTES.STUDENTS_ADD}>
-					<div className="py-2 px-4 m-5 border-2 border-transparent border-solid bg-cyan-500 ease-in-out duration-300 hover:bg-transparent hover:text-cyan-500 hover:border-cyan-500 rounded-md">
+					<div className="py-2 px-4 m-5 border-2 border-transparent border-solid bg-cyan-600 ease-in-out duration-300 hover:bg-transparent hover:text-cyan-600 hover:border-cyan-600 rounded-md">
 						Add a Student
 					</div>
 				</Link>
 				<Link to={ROUTES.COURSES_ADD}>
-					<div className="py-2 px-4 m-5 border-2 border-transparent border-solid bg-cyan-500 ease-in-out duration-300 hover:bg-transparent hover:text-cyan-500 hover:border-cyan-500 rounded-md">
+					<div className="py-2 px-4 m-5 border-2 border-transparent border-solid bg-cyan-600 ease-in-out duration-300 hover:bg-transparent hover:text-cyan-600 hover:border-cyan-600 rounded-md">
 						Add a Course
 					</div>
 				</Link>

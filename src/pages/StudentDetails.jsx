@@ -87,7 +87,7 @@ const StudentDetails = () => {
 				{student?.courses?.map((course) => (
 					<div
 						key={course.id}
-						className={`flex flex-col justify-center items-center min-w-[15rem] m-4 p-4 text-center w-1/4 rounded-md hover:text-cyan-500 border-2 border-solid ease-in-out duration-300 border-cyan-600 hover:border-slate-300`}
+						className={`flex flex-col justify-center items-center min-w-[15rem] m-4 p-4 text-center w-1/4 rounded-md hover:text-cyan-600 border-2 border-solid ease-in-out duration-300 border-cyan-600 hover:border-slate-300`}
 					>
 						<Link to={`${ROUTES.COURSES}/${course.id}`}>
 							<div>{course.name} </div>

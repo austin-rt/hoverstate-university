@@ -16,7 +16,7 @@ const Register = () => {
 				or{' '}
 				<Link
 					to={ROUTES.LOGIN}
-					className="hover:text-cyan-500 ease-in-out duration-300"
+					className="hover:text-cyan-600 ease-in-out duration-300"
 				>
 					Login
 				</Link>

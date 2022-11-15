@@ -42,10 +42,10 @@ const ViewStudents = () => {
 				{students?.map((student) => (
 					<div
 						key={student.id}
-						className="flex flex-col justify-start items-center h-max-content w-1/5 min-w-[20rem] border border-solid hover:border-cyan-500 bg-transparent text-sm rounded-md m-4"
+						className="flex flex-col justify-start items-center h-max-content w-1/5 min-w-[20rem] border border-solid hover:border-cyan-600 bg-transparent text-sm rounded-md m-4"
 					>
 						<Link to={`${ROUTES.STUDENTS}/${student.id}`} className="w-full">
-							<div className="flex flex-col justify-center items-center bg-cyan-600 h-20 text-lg w-full rounded-t-md hover:bg-transparent ease-in-out duration-300 border-b border-transparent border-solid hover:text-cyan-500 hover:border-cyan-500">
+							<div className="flex flex-col justify-center items-center bg-cyan-600 h-20 text-lg w-full rounded-t-md hover:bg-transparent ease-in-out duration-300 border-b border-transparent border-solid hover:text-cyan-600 hover:border-cyan-600">
 								<div className="w-full flex flex-col justify-center items-center text-2xl">
 									{student.first_name} {student.last_name}
 									<div className="text-sm">
@@ -93,7 +93,7 @@ const ViewStudents = () => {
 									>
 										<div
 											className={
-												'm-2 p-2 text-center w-5/6 rounded-md border border-solid border-cyan-500 hover:border-slate-300 ease-in-out duration-300 hover:text-cyan-500'
+												'm-2 p-2 text-center w-5/6 rounded-md border border-solid border-cyan-600 hover:border-slate-300 ease-in-out duration-300 hover:text-cyan-600'
 											}
 										>
 											<div>{course.course_code}</div>

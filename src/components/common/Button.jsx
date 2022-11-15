@@ -7,7 +7,7 @@ const Button = ({ buttonText = FORM_BUTTON_TEXT.SUBMIT }) => {
 			${
 				buttonText === FORM_BUTTON_TEXT.DELETE
 					? `bg-red-500 hover:text-red-500 hover:border-red-500`
-					: `bg-cyan-500 hover:text-cyan-500 hover:border-cyan-500 `
+					: `bg-cyan-600 hover:text-cyan-600 hover:border-cyan-600 `
 			} `}
 		>
 			{buttonText}
