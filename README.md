@@ -11,8 +11,8 @@
 ### **_Deployed Site_**
 
 _[Hoverstate University](https://hoverstate-university.netlify.app/)_
-_[Front-end Repo](https://github.com/austin-rt/hoverstate-universit)_
-_[Back-end Repo](https://github.com/austin-rt/hoverstate-university-api)_
+_[Front-End Repo](https://github.com/austin-rt/hoverstate-universit)_
+_[Back-End Repo](https://github.com/austin-rt/hoverstate-university-api)_
 
 ---
 
@@ -24,6 +24,7 @@ Hoverstate University is a simple full-stack test project built using a PostgreS
 
 - PosgreSQL
 - Sequelize
+- Express
 - React.js
 - Redux Toolkit
 - TailwindCSS
