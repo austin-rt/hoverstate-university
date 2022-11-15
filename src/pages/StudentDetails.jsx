@@ -47,17 +47,6 @@ const StudentDetails = () => {
 		toggleAssignCourseModalVisibility(!assignCourseModalVisibility);
 	};
 
-	const handleDeleteClick = async (courseId) => {
-		try {
-			await axios.delete(
-				`${BASE_URL}${API_ENDPOINTS.STUDENTS.DELETE_COURSE}/${studentId}/${courseId}`
-			);
-			getStudent();
-		} catch (err) {
-			console.log(err);
-		}
-	};
-
 	useEffect(() => {
 		getStudent();
 	}, [getStudent]);
