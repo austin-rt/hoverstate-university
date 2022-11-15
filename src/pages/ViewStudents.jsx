@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Lottie from 'lottie-react';
+import Student from '../assets/lottie/Student.json';
 import {
 	BASE_URL,
 	API_ENDPOINTS,
@@ -29,7 +31,8 @@ const ViewStudents = () => {
 
 	return (
 		<div className="flex flex-col flex-wrap w-full h-full justify-center items-center text-center text-slate-300">
-			<h1 className="text-4xl mb-5">Students</h1>
+			<Lottie className="w-1/4" animationData={Student} loop={true} />
+			<h1 className="text-4xl -mt-[2rem] mb-5">Students</h1>
 			<div className="flex justify-center w-1/3 mb-5">
 				<Link to={ROUTES.STUDENTS_ADD}>
 					<Button buttonText={FORM_BUTTON_TEXT.ADD_STUDENT} />

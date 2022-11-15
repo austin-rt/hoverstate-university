@@ -1,5 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Lottie from 'lottie-react';
+import Admin from '../assets/lottie/Admin.json';
 import { ROUTES } from '../utils/constants';
 
 const Dashboard = () => {
@@ -7,10 +9,11 @@ const Dashboard = () => {
 
 	return (
 		<div className="flex flex-col justify-center items-center w-full h-full">
-			<h1 className="text-3xl font-semibold">
+			<Lottie className="w-2/3" animationData={Admin} loop={true} />
+			<h1 className="text-4xl font-semibold mb-14">
 				Welcome{user && ` ${user.username}`}!
 			</h1>
-			<div className="flex flex-wrap w-2/3 text-slate-200 text-2xl font-medium justify-center">
+			<div className="flex flex-wrap w-3/4 text-2xl font-medium items-centertext-center justify-center">
 				<Link to={ROUTES.COURSES}>
 					<div className="py-2 px-4 m-5 border-2 border-transparent border-solid bg-cyan-500 ease-in-out duration-300 hover:bg-transparent hover:text-cyan-500 hover:border-cyan-500 rounded-md">
 						View Courses
