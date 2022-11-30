@@ -8,11 +8,13 @@
 
 ![Hoverstate University](./assets/images/png/hoverstate_university_readme_banner.png)
 
-### **_Deployed Site_**
+### **_Links_**
 
-_[Hoverstate University](https://hoverstate-university.netlify.app/)_
-_[Front-End Repo](https://github.com/austin-rt/hoverstate-universit)_
-_[Back-End Repo](https://github.com/austin-rt/hoverstate-university-api)_
+- [Hoverstate University Demo](https://hoverstate-university.netlify.app/)
+
+- [Front-End Repo](https://github.com/austin-rt/hoverstate-universit)
+
+- [Back-End Repo](https://github.com/austin-rt/hoverstate-university-api)
 
 ---
 
