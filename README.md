@@ -35,7 +35,7 @@ Hoverstate University is a simple full-stack test project built using a PostgreS
 
 #### **_Entity Relationship Diagram:_**
 
-![Entity Relationship Diagram](./assets/images/png/hoverstate_university_erd.png 'Entity Relationship Diagram')
+![Entity Relationship Diagram](./assets/images/drawio/hoverstate_university_erd.drawio.png 'Entity Relationship Diagram')
 
 #### **_Component Hierarchy Diagram:_**
 
